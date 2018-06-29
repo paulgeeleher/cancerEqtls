@@ -1,6 +1,6 @@
 # Reproduce results for cancer eQTL mapping study
 
-Note: There are additional annotation files required before you run the scripts below, which can be obtained here: There are files for SNP array annotation, tumor purity estimates, TCGA clinical annotations, or gene annotation. These files should all be copied to "theRootDir", before the scripts below are run.
+Note: There are additional annotation files required before you run the scripts below, which can be obtained here: https://osf.io/e467a/?action=download There are files for SNP array annotation, tumor purity estimates, TCGA clinical annotations, or gene annotation. These files should all be copied to "theRootDir", before the scripts below are run.
 
 Note: These scripts need to be run in the sequence below: the early scripts create / download data that is used by the subsequent scripts!
 
