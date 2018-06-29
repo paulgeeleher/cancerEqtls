@@ -1,0 +1,180 @@
+<html>
+
+<head>
+<title>Reproduce results for cancer eQTL mapping study</title>
+</head>
+
+<body style="width:1000px;background-color:#FDFDF8;">
+
+<h1>Reproduce results for cancer eQTL mapping study</h1>
+
+<p>
+These scripts were written in R markdown and the HTML files were generated using the knitr package; R files were converted into HTML reports using the "spin()" function.
+</p>
+
+
+<p>
+<u>Note</u>: There are additional annotation files required before you run the scripts below, which can be obtained <a href="../DATA.zip">here</a>: There are files for SNP array annotation, tumor purity estimates, TCGA clinical annotations, or gene annotation. These files should all be copied to "theRootDir", before the scripts below are run.
+</p>
+
+<p>
+<u>Note</u>: These scripts need to be run in the sequence below: the early scripts create / download data that is used by the subsequent scripts!
+</p>
+
+<p>
+<u>Note</u>: Substantial computing resources are required to run some of these scripts. The scripts were tested on the Bionimbus Protected Data Cloud, using Ubuntu Linux 14.04.3 LTS, under a configuration with 32 cores and 128Gb or RAM. R version 3.2.2 was used.
+</p>
+
+<hr>
+<h3>Instructions to install required packages and setup environment</h3>
+
+<p>
+Please install the following packges. From the R prompt:
+<pre>
+> source("http://bioconductor.org/biocLite.R")
+> biocLite(c("parallel", "grid", "scales", "ggthemes", "pd.genomewidesnp.6", "GO.db", "RColorBrewer", 
+"reshape2", "goseq", "PEER", "car", "GenomicRanges", "GenomicFeatures", "ggplot2", "org.Hs.eg.db", 
+"TxDb.Hsapiens.UCSC.hg19.knownGene", "glmnet", "gdata", "knitr", "preprocessCore", "Hmisc", "qqman", "MASS"))
+</pre>
+</p>
+
+
+
+<hr>
+<h3>Scripts to download data and reproduce analysis</h3>
+
+<p>
+<b>theRootDir.R</b> [<a href="theRootDir.R">R SCRIPT</a>] <br>
+This file defines the variable "theRootDir", which is used as the root directory for all other scripts, which build various directory structures on top of this. This is assumed to be located at "/mnt/data_scratch/prediXcanProj/". This should either be updated to match the location you have used on your machine, or you must create this directory.
+<br>
+</p>
+
+
+<p>
+<b>simulatedData.R</b> [<a href="simulatedData.R">R SCRIPT</a>] [<a href="simulatedData.html">HTML Report</a>] [F]<br>
+This script creates the simulated data and all of the result that pertain to the simulated data, i.e. Figure 1 and all associated results and tables.
+<br>
+</p>
+
+
+<p>
+<b>read_raw_tcga_breast_cancer_snp_data.R</b> [<a href="read_raw_tcga_breast_cancer_snp_data.R">R SCRIPT</a>] <!--[<a href="read_raw_tcga_breast_cancer_snp_data.html">HTML Report</a>]--> [RUN]<br>
+This script processes the raw Affymetrix SNP 6.0 array data that was downloaded from GDC (instructions on downloading the raw (protected) SNP data from GDC are contained in the script), however <u>authorization must be obtained from TCGA to access these germline genetic data</u> and we are NOT permitted to re-post these data. The script outputs the genotypes in a matrix of with row names rsIDs and column names TCGA sample name, which is saved as an RData file and used by subsequent scripts. This script also relies on a number of Affymetrix annotation files that we provide <a href="../DATA.zip">here</a>. Details of where these files came from (and how to obtain them yourself) are contained in the script.
+<br>
+</p>
+
+
+<p>
+<b>download_tcga_expression_data.R</b> [<a href="download_tcga_expression_data.R">R SCRIPT</a>] <!--[<a href="download_tcga_expression_data.html">HTML Report</a>]--> [R] <br>
+A script to download the TCGA gene expression data from FireBrowse.
+</p>
+
+
+<p>
+<b>batch_correct_tcga_data.R</b> [<a href="batch_correct_tcga_data.R">R SCRIPT</a>] <!--[<a href="batch_correct_tcga_data.html">HTML Report</a>]--> [R, remove prrophetic lib, not used?]<br>
+Script to process TCGA expression data and batch correct it using the RUV approach. We described this approach in a previous publication (see Methods section of Geeleher et al., Genome Research 2017, PMID:28847918))
+</p>
+
+
+
+
+
+
+<p>
+<b>tcga_expression_and_snp_data_matrixEqtl_format.R</b> [<a href="tcga_expression_and_snp_data_matrixEqtl_format.R">R SCRIPT</a>] [R] <!--[<a href="tcga_expression_and_snp_data_matrixEqtl_format.html">HTML Report</a>]--> <br>
+Script to read the TCGA SNP and gene expression data (from the file formats output in the previous scripts) and output them in Matrix eQTL (PMID: 22492648) format . Note, these Matrix eQTL format files are used in subsequent scripts, but Matrix eQTL was not used for the analysis in the paper. Note this file also includes tumor purity estimates from the following paper (Onuchic et al., Cell Reports 2016, PMID:27851969); these tumor purity estimates were not used in the final analysis, but they are used in some analysis as a comparison of methods for estimating tumor purity. These tumor purity estimates are available with the supplementary data of Onuchic et al., and we have also made them available <a href="../DATA.zip">here</a>.
+</p>
+
+
+
+
+<p>
+<b>filter_tcga_eqtl_data.R</b> [<a href="filter_tcga_eqtl_data.R">R SCRIPT</a>] <!--[<a href="filter_tcga_eqtl_data.html">HTML Report</a>]--> [R]<br>
+This script filters the TCGA expression and SNP data based on the guidelines of GTEx (see script for details). It processes and outputs the CPE tumor purity estimates used in the main analysis. CPE purity estimates are available in the supplementary data of Aran et al., Nature Communications 2017 (PMID:26634437); we also provide them. This script also uses some TCGA clinical data (to filter males from the breast cancer dataset), provided <a href="../DATA.zip">here</a>. The script saves an RData file (containing subsetted and ordered SNP, expression, purity data etc.) that is used in subsequent eQTL analysis by the next scripts.
+</p>
+
+
+<p>
+<b>run_cis_eqtl_analysis_in_r.R</b> [<a href="run_cis_eqtl_analysis_in_r.R">R SCRIPT</a>] <!--[<a href="run_cis_eqtl_analysis_in_r.html">HTML Report</a>]-->[R]<br>
+Runs an eQTL analysis in R. Written in a way to be reasonably efficient (by grouping SNPs by gene only one matrix inversion per gene, by far the most computationally intensive step in model fitting). Script takes approx 40hrs to run on a standard desktop (no multi-threading). This script performs various eQTL mappings, for example, with an without PEER factors and encoding tumor purity in different ways. It also calculates the PEER factors. The output is processed by the next script (prepare_results_allAnalyses.R).
+</p>
+
+
+<p>
+<b>prepare_results_allAnalyses.R</b> [<a href="prepare_results_allAnalyses.R">R SCRIPT</a>] <!--[<a href="prepare_results_allAnalyses.html">HTML Report</a>]--> [R] <br>
+This script takes the output of the script above (run_cis_eqtl_analysis_in_r.R) and processes the results, outputting them in a usable format. I.e. outputted model coefficients and creating matrices of P-values, effect sizes and standard errors, which this script takes care of in an efficient way.
+</p>
+
+
+
+<p>
+<b>compareVariousEqtls.R</b> [<a href="compareVariousEqtls.R">R SCRIPT</a>] <!--[<a href="compareVariousEqtls.html">HTML Report</a>]--> [R] <br>
+This script inputs the data prepared above (i.e. the eQTL data) and outputs several of the results and figures (Fig. 2(d-f)) included in the main text. For example the numbers of significant eQTLs with the various approaches. 
+</p>
+
+
+<p>
+<b>cpeExpressionCorsFig2.R</b> [<a href="cpeExpressionCorsFig2.R">R SCRIPT</a>] <!--[<a href="cpeExpressionCorsFig2.html">HTML Report</a>]--> [R] <br>
+Creates Fig. 2(a-c) and associated results. i.e. the results pertaining to the estimated tumor purities and how those are related to gene expression.
+</p>
+
+
+
+
+<p>
+<b>gtex_and_tcga_integrative_analysis.R</b> [<a href="gtex_and_tcga_integrative_analysis.R">R SCRIPT</a>] <!--[<a href="gtex_and_tcga_integrative_analysis.html">HTML Report</a>]--><br>
+This script does the integrative analysis of GTEx and TCGA data, everything in Figure 3 and associated results and tables.
+<br>
+Note: This script relies on summary statistics that were downloaded from GTEx, specifically, the release <a href="https://www.gtexportal.org/home/datasets">GTEx v6 data</a>. The following files must be downloaded from GTEx and place in your "data/" directory (i.e. theRootDir/data, which should have already been created by previous scripts):
+
+<p>
+Whole_Blood_Analysis.v6p.all_snpgene_pairs.txt<br> <!-- Need to post these files to OSF, in case they disappear from GTEx -->
+Cells_EBV-transformed_lymphocytes_Analysis.v6p.all_snpgene_pairs.txt<br>
+Cells_Transformed_fibroblasts_Analysis.v6p.all_snpgene_pairs.txt<br>
+Breast_Mammary_Tissue_Analysis.v6p.all_snpgene_pairs.txt
+</p>
+
+<p>
+Furthermore, some annotation files are required to convert the GTEx SNP IDs to RS IDs etc. We have included these with the other annotation data <a href="../DATA.zip">here</a>. These are:<br>
+<p>
+gencode.v19.genes.v6p.patched_contigs.parsed.txt<br> <!-- copy to DATA.zip (need to pull from PDC, not on GTEx anymore!!?) /mnt/data_scratch/gtexData/annotations/gencode.v19.genes.v6p.patched_contigs.parsed.txt --> 
+GTEx_OMNI_genot_1KG_imputed_var_info4_maf01_CR95_CHR_POSb37_ID_REF_ALT_release_v6.txt <!-- copy to DATA.zip (need to pull from PDC, not on GTEx anymore!!?) /mnt/data_scratch/gtexData/annotations/ -->
+</p>
+</p>
+
+<p>
+One other key step in this script is flipping the direction-of-effect for some SNPs; this is because <u>TCGA and GTEx have not always used the same reference allele</u>. Furthermore, the annotation files provided by Affymetrix, and the annotations used by GTEx, do not always report the SNP nucleotide info (G,C,T,A) on the same strand, i.e. GTEx have always reported this information from the forward strand, but the Affymetrix annotation files used to process the TCGA data are mixed between the forward and reverse strands; this is defined in this file (originally part of the <a href="https://www.broadinstitute.org/ftp/pub/mpg/birdsuite/birdsuite_metadata_1.5.5.tgz">Birdsuite Metadata</a> and included with the other annotation files we provide <a href="../DATA.zip">here</a>):<br>
+
+<p>
+affy6arrayStrandInfo.csv <!-- copy to DATA.zip (need to pull from PDC -->
+</p>
+
+Finally, the GTEx summary data in particular is very large and requires a lot of memory to load. Tested on a machine with 128Gb or RAM.
+
+</p>
+</p>
+
+<p>
+<b>imputed_snps_with_gtex_analysis.R</b> [<a href="imputed_snps_with_gtex_analysis.R">R SCRIPT</a>] <!--[<a href="imputed_snps_with_gtex_analysis.html">HTML Report</a>]--> <br>
+This script does the analysis with the imputed SNPs from the large breast cancer GWAS meta-analysis and integrative analysis of GTEx, TCGA and GWAS data, i.e. everything in Figure 4 and associated results and supplementary figures/tables. Note, this script requires the imputed TCGA germline genotype data, which is protected data, that we are not permitted to repost (contained in brcaGwasSigSnpsImputed.RData). NB: Authorization must be obtained from TCGA to access all germline genotype data.
+</p>
+
+
+
+<h3>Additional Script:</h3>
+<p>
+<b>processImputedVcfs_TcgaBrca.R</b> [<a href="processImputedVcfs_TcgaBrca.R">R SCRIPT</a>] <!--[<a href="imputed_snps_with_gtex_analysis.html">HTML Report</a>]--> <br>
+Additionally, we provide a script we used to process the imputed TCGA SNP data, outputted as VCF files by the Michigan Imputation Server. Details of how these imputations were performed are complex, and are included in the Methods section of our paper. These files are enormous and we are not permitted to re-post them, as these are protected data, which can be used to de-identify patients, and thus authorization must be obtained from TCGA in order to access them. We provide the output of this script as an RData file, as it is necessary to run the "imputed_snps_with_gtex_analysis.R" script. For completeness, we also provide this script, which was used to process these files.
+</p>
+
+
+
+</html>
+</body>
+
+
+
+
+
+
+

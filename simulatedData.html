@@ -1,0 +1,1032 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+<title></title>
+
+<script type="text/javascript">
+window.onload = function() {
+  var imgs = document.getElementsByTagName('img'), i, img;
+  for (i = 0; i < imgs.length; i++) {
+    img = imgs[i];
+    // center an image if it is the only element of its parent
+    if (img.parentElement.childElementCount === 1)
+      img.parentElement.style.textAlign = 'center';
+  }
+};
+</script>
+
+<!-- Styles for R syntax highlighter -->
+<style type="text/css">
+   pre .operator,
+   pre .paren {
+     color: rgb(104, 118, 135)
+   }
+
+   pre .literal {
+     color: #990073
+   }
+
+   pre .number {
+     color: #099;
+   }
+
+   pre .comment {
+     color: #998;
+     font-style: italic
+   }
+
+   pre .keyword {
+     color: #900;
+     font-weight: bold
+   }
+
+   pre .identifier {
+     color: rgb(0, 0, 0);
+   }
+
+   pre .string {
+     color: #d14;
+   }
+</style>
+
+<!-- R syntax highlighter -->
+<script type="text/javascript">
+var hljs=new function(){function m(p){return p.replace(/&/gm,"&amp;").replace(/</gm,"&lt;")}function f(r,q,p){return RegExp(q,"m"+(r.cI?"i":"")+(p?"g":""))}function b(r){for(var p=0;p<r.childNodes.length;p++){var q=r.childNodes[p];if(q.nodeName=="CODE"){return q}if(!(q.nodeType==3&&q.nodeValue.match(/\s+/))){break}}}function h(t,s){var p="";for(var r=0;r<t.childNodes.length;r++){if(t.childNodes[r].nodeType==3){var q=t.childNodes[r].nodeValue;if(s){q=q.replace(/\n/g,"")}p+=q}else{if(t.childNodes[r].nodeName=="BR"){p+="\n"}else{p+=h(t.childNodes[r])}}}if(/MSIE [678]/.test(navigator.userAgent)){p=p.replace(/\r/g,"\n")}return p}function a(s){var r=s.className.split(/\s+/);r=r.concat(s.parentNode.className.split(/\s+/));for(var q=0;q<r.length;q++){var p=r[q].replace(/^language-/,"");if(e[p]){return p}}}function c(q){var p=[];(function(s,t){for(var r=0;r<s.childNodes.length;r++){if(s.childNodes[r].nodeType==3){t+=s.childNodes[r].nodeValue.length}else{if(s.childNodes[r].nodeName=="BR"){t+=1}else{if(s.childNodes[r].nodeType==1){p.push({event:"start",offset:t,node:s.childNodes[r]});t=arguments.callee(s.childNodes[r],t);p.push({event:"stop",offset:t,node:s.childNodes[r]})}}}}return t})(q,0);return p}function k(y,w,x){var q=0;var z="";var s=[];function u(){if(y.length&&w.length){if(y[0].offset!=w[0].offset){return(y[0].offset<w[0].offset)?y:w}else{return w[0].event=="start"?y:w}}else{return y.length?y:w}}function t(D){var A="<"+D.nodeName.toLowerCase();for(var B=0;B<D.attributes.length;B++){var C=D.attributes[B];A+=" "+C.nodeName.toLowerCase();if(C.value!==undefined&&C.value!==false&&C.value!==null){A+='="'+m(C.value)+'"'}}return A+">"}while(y.length||w.length){var v=u().splice(0,1)[0];z+=m(x.substr(q,v.offset-q));q=v.offset;if(v.event=="start"){z+=t(v.node);s.push(v.node)}else{if(v.event=="stop"){var p,r=s.length;do{r--;p=s[r];z+=("</"+p.nodeName.toLowerCase()+">")}while(p!=v.node);s.splice(r,1);while(r<s.length){z+=t(s[r]);r++}}}}return z+m(x.substr(q))}function j(){function q(x,y,v){if(x.compiled){return}var u;var s=[];if(x.k){x.lR=f(y,x.l||hljs.IR,true);for(var w in x.k){if(!x.k.hasOwnProperty(w)){continue}if(x.k[w] instanceof Object){u=x.k[w]}else{u=x.k;w="keyword"}for(var r in u){if(!u.hasOwnProperty(r)){continue}x.k[r]=[w,u[r]];s.push(r)}}}if(!v){if(x.bWK){x.b="\\b("+s.join("|")+")\\s"}x.bR=f(y,x.b?x.b:"\\B|\\b");if(!x.e&&!x.eW){x.e="\\B|\\b"}if(x.e){x.eR=f(y,x.e)}}if(x.i){x.iR=f(y,x.i)}if(x.r===undefined){x.r=1}if(!x.c){x.c=[]}x.compiled=true;for(var t=0;t<x.c.length;t++){if(x.c[t]=="self"){x.c[t]=x}q(x.c[t],y,false)}if(x.starts){q(x.starts,y,false)}}for(var p in e){if(!e.hasOwnProperty(p)){continue}q(e[p].dM,e[p],true)}}function d(B,C){if(!j.called){j();j.called=true}function q(r,M){for(var L=0;L<M.c.length;L++){if((M.c[L].bR.exec(r)||[null])[0]==r){return M.c[L]}}}function v(L,r){if(D[L].e&&D[L].eR.test(r)){return 1}if(D[L].eW){var M=v(L-1,r);return M?M+1:0}return 0}function w(r,L){return L.i&&L.iR.test(r)}function K(N,O){var M=[];for(var L=0;L<N.c.length;L++){M.push(N.c[L].b)}var r=D.length-1;do{if(D[r].e){M.push(D[r].e)}r--}while(D[r+1].eW);if(N.i){M.push(N.i)}return f(O,M.join("|"),true)}function p(M,L){var N=D[D.length-1];if(!N.t){N.t=K(N,E)}N.t.lastIndex=L;var r=N.t.exec(M);return r?[M.substr(L,r.index-L),r[0],false]:[M.substr(L),"",true]}function z(N,r){var L=E.cI?r[0].toLowerCase():r[0];var M=N.k[L];if(M&&M instanceof Array){return M}return false}function F(L,P){L=m(L);if(!P.k){return L}var r="";var O=0;P.lR.lastIndex=0;var M=P.lR.exec(L);while(M){r+=L.substr(O,M.index-O);var N=z(P,M);if(N){x+=N[1];r+='<span class="'+N[0]+'">'+M[0]+"</span>"}else{r+=M[0]}O=P.lR.lastIndex;M=P.lR.exec(L)}return r+L.substr(O,L.length-O)}function J(L,M){if(M.sL&&e[M.sL]){var r=d(M.sL,L);x+=r.keyword_count;return r.value}else{return F(L,M)}}function I(M,r){var L=M.cN?'<span class="'+M.cN+'">':"";if(M.rB){y+=L;M.buffer=""}else{if(M.eB){y+=m(r)+L;M.buffer=""}else{y+=L;M.buffer=r}}D.push(M);A+=M.r}function G(N,M,Q){var R=D[D.length-1];if(Q){y+=J(R.buffer+N,R);return false}var P=q(M,R);if(P){y+=J(R.buffer+N,R);I(P,M);return P.rB}var L=v(D.length-1,M);if(L){var O=R.cN?"</span>":"";if(R.rE){y+=J(R.buffer+N,R)+O}else{if(R.eE){y+=J(R.buffer+N,R)+O+m(M)}else{y+=J(R.buffer+N+M,R)+O}}while(L>1){O=D[D.length-2].cN?"</span>":"";y+=O;L--;D.length--}var r=D[D.length-1];D.length--;D[D.length-1].buffer="";if(r.starts){I(r.starts,"")}return R.rE}if(w(M,R)){throw"Illegal"}}var E=e[B];var D=[E.dM];var A=0;var x=0;var y="";try{var s,u=0;E.dM.buffer="";do{s=p(C,u);var t=G(s[0],s[1],s[2]);u+=s[0].length;if(!t){u+=s[1].length}}while(!s[2]);if(D.length>1){throw"Illegal"}return{r:A,keyword_count:x,value:y}}catch(H){if(H=="Illegal"){return{r:0,keyword_count:0,value:m(C)}}else{throw H}}}function g(t){var p={keyword_count:0,r:0,value:m(t)};var r=p;for(var q in e){if(!e.hasOwnProperty(q)){continue}var s=d(q,t);s.language=q;if(s.keyword_count+s.r>r.keyword_count+r.r){r=s}if(s.keyword_count+s.r>p.keyword_count+p.r){r=p;p=s}}if(r.language){p.second_best=r}return p}function i(r,q,p){if(q){r=r.replace(/^((<[^>]+>|\t)+)/gm,function(t,w,v,u){return w.replace(/\t/g,q)})}if(p){r=r.replace(/\n/g,"<br>")}return r}function n(t,w,r){var x=h(t,r);var v=a(t);var y,s;if(v){y=d(v,x)}else{return}var q=c(t);if(q.length){s=document.createElement("pre");s.innerHTML=y.value;y.value=k(q,c(s),x)}y.value=i(y.value,w,r);var u=t.className;if(!u.match("(\\s|^)(language-)?"+v+"(\\s|$)")){u=u?(u+" "+v):v}if(/MSIE [678]/.test(navigator.userAgent)&&t.tagName=="CODE"&&t.parentNode.tagName=="PRE"){s=t.parentNode;var p=document.createElement("div");p.innerHTML="<pre><code>"+y.value+"</code></pre>";t=p.firstChild.firstChild;p.firstChild.cN=s.cN;s.parentNode.replaceChild(p.firstChild,s)}else{t.innerHTML=y.value}t.className=u;t.result={language:v,kw:y.keyword_count,re:y.r};if(y.second_best){t.second_best={language:y.second_best.language,kw:y.second_best.keyword_count,re:y.second_best.r}}}function o(){if(o.called){return}o.called=true;var r=document.getElementsByTagName("pre");for(var p=0;p<r.length;p++){var q=b(r[p]);if(q){n(q,hljs.tabReplace)}}}function l(){if(window.addEventListener){window.addEventListener("DOMContentLoaded",o,false);window.addEventListener("load",o,false)}else{if(window.attachEvent){window.attachEvent("onload",o)}else{window.onload=o}}}var e={};this.LANGUAGES=e;this.highlight=d;this.highlightAuto=g;this.fixMarkup=i;this.highlightBlock=n;this.initHighlighting=o;this.initHighlightingOnLoad=l;this.IR="[a-zA-Z][a-zA-Z0-9_]*";this.UIR="[a-zA-Z_][a-zA-Z0-9_]*";this.NR="\\b\\d+(\\.\\d+)?";this.CNR="\\b(0[xX][a-fA-F0-9]+|(\\d+(\\.\\d*)?|\\.\\d+)([eE][-+]?\\d+)?)";this.BNR="\\b(0b[01]+)";this.RSR="!|!=|!==|%|%=|&|&&|&=|\\*|\\*=|\\+|\\+=|,|\\.|-|-=|/|/=|:|;|<|<<|<<=|<=|=|==|===|>|>=|>>|>>=|>>>|>>>=|\\?|\\[|\\{|\\(|\\^|\\^=|\\||\\|=|\\|\\||~";this.ER="(?![\\s\\S])";this.BE={b:"\\\\.",r:0};this.ASM={cN:"string",b:"'",e:"'",i:"\\n",c:[this.BE],r:0};this.QSM={cN:"string",b:'"',e:'"',i:"\\n",c:[this.BE],r:0};this.CLCM={cN:"comment",b:"//",e:"$"};this.CBLCLM={cN:"comment",b:"/\\*",e:"\\*/"};this.HCM={cN:"comment",b:"#",e:"$"};this.NM={cN:"number",b:this.NR,r:0};this.CNM={cN:"number",b:this.CNR,r:0};this.BNM={cN:"number",b:this.BNR,r:0};this.inherit=function(r,s){var p={};for(var q in r){p[q]=r[q]}if(s){for(var q in s){p[q]=s[q]}}return p}}();hljs.LANGUAGES.cpp=function(){var a={keyword:{"false":1,"int":1,"float":1,"while":1,"private":1,"char":1,"catch":1,"export":1,virtual:1,operator:2,sizeof:2,dynamic_cast:2,typedef:2,const_cast:2,"const":1,struct:1,"for":1,static_cast:2,union:1,namespace:1,unsigned:1,"long":1,"throw":1,"volatile":2,"static":1,"protected":1,bool:1,template:1,mutable:1,"if":1,"public":1,friend:2,"do":1,"return":1,"goto":1,auto:1,"void":2,"enum":1,"else":1,"break":1,"new":1,extern:1,using:1,"true":1,"class":1,asm:1,"case":1,typeid:1,"short":1,reinterpret_cast:2,"default":1,"double":1,register:1,explicit:1,signed:1,typename:1,"try":1,"this":1,"switch":1,"continue":1,wchar_t:1,inline:1,"delete":1,alignof:1,char16_t:1,char32_t:1,constexpr:1,decltype:1,noexcept:1,nullptr:1,static_assert:1,thread_local:1,restrict:1,_Bool:1,complex:1},built_in:{std:1,string:1,cin:1,cout:1,cerr:1,clog:1,stringstream:1,istringstream:1,ostringstream:1,auto_ptr:1,deque:1,list:1,queue:1,stack:1,vector:1,map:1,set:1,bitset:1,multiset:1,multimap:1,unordered_set:1,unordered_map:1,unordered_multiset:1,unordered_multimap:1,array:1,shared_ptr:1}};return{dM:{k:a,i:"</",c:[hljs.CLCM,hljs.CBLCLM,hljs.QSM,{cN:"string",b:"'\\\\?.",e:"'",i:"."},{cN:"number",b:"\\b(\\d+(\\.\\d*)?|\\.\\d+)(u|U|l|L|ul|UL|f|F)"},hljs.CNM,{cN:"preprocessor",b:"#",e:"$"},{cN:"stl_container",b:"\\b(deque|list|queue|stack|vector|map|set|bitset|multiset|multimap|unordered_map|unordered_set|unordered_multiset|unordered_multimap|array)\\s*<",e:">",k:a,r:10,c:["self"]}]}}}();hljs.LANGUAGES.r={dM:{c:[hljs.HCM,{cN:"number",b:"\\b0[xX][0-9a-fA-F]+[Li]?\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\b\\d+(?:[eE][+\\-]?\\d*)?L\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\b\\d+\\.(?!\\d)(?:i\\b)?",e:hljs.IMMEDIATE_RE,r:1},{cN:"number",b:"\\b\\d+(?:\\.\\d*)?(?:[eE][+\\-]?\\d*)?i?\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\.\\d+(?:[eE][+\\-]?\\d*)?i?\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"keyword",b:"(?:tryCatch|library|setGeneric|setGroupGeneric)\\b",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\.\\.\\.",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\.\\.\\d+(?![\\w.])",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\b(?:function)",e:hljs.IMMEDIATE_RE,r:2},{cN:"keyword",b:"(?:if|in|break|next|repeat|else|for|return|switch|while|try|stop|warning|require|attach|detach|source|setMethod|setClass)\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"literal",b:"(?:NA|NA_integer_|NA_real_|NA_character_|NA_complex_)\\b",e:hljs.IMMEDIATE_RE,r:10},{cN:"literal",b:"(?:NULL|TRUE|FALSE|T|F|Inf|NaN)\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"identifier",b:"[a-zA-Z.][a-zA-Z0-9._]*\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"operator",b:"<\\-(?!\\s*\\d)",e:hljs.IMMEDIATE_RE,r:2},{cN:"operator",b:"\\->|<\\-",e:hljs.IMMEDIATE_RE,r:1},{cN:"operator",b:"%%|~",e:hljs.IMMEDIATE_RE},{cN:"operator",b:">=|<=|==|!=|\\|\\||&&|=|\\+|\\-|\\*|/|\\^|>|<|!|&|\\||\\$|:",e:hljs.IMMEDIATE_RE,r:0},{cN:"operator",b:"%",e:"%",i:"\\n",r:1},{cN:"identifier",b:"`",e:"`",r:0},{cN:"string",b:'"',e:'"',c:[hljs.BE],r:0},{cN:"string",b:"'",e:"'",c:[hljs.BE],r:0},{cN:"paren",b:"[[({\\])}]",e:hljs.IMMEDIATE_RE,r:0}]}};
+hljs.initHighlightingOnLoad();
+</script>
+
+
+
+<style type="text/css">
+body, td {
+   font-family: sans-serif;
+   background-color: white;
+   font-size: 13px;
+}
+
+body {
+  max-width: 800px;
+  margin: auto;
+  padding: 1em;
+  line-height: 20px;
+}
+
+tt, code, pre {
+   font-family: 'DejaVu Sans Mono', 'Droid Sans Mono', 'Lucida Console', Consolas, Monaco, monospace;
+}
+
+h1 {
+   font-size:2.2em;
+}
+
+h2 {
+   font-size:1.8em;
+}
+
+h3 {
+   font-size:1.4em;
+}
+
+h4 {
+   font-size:1.0em;
+}
+
+h5 {
+   font-size:0.9em;
+}
+
+h6 {
+   font-size:0.8em;
+}
+
+a:visited {
+   color: rgb(50%, 0%, 50%);
+}
+
+pre, img {
+  max-width: 100%;
+}
+pre {
+  overflow-x: auto;
+}
+pre code {
+   display: block; padding: 0.5em;
+}
+
+code {
+  font-size: 92%;
+  border: 1px solid #ccc;
+}
+
+code[class] {
+  background-color: #F8F8F8;
+}
+
+table, td, th {
+  border: none;
+}
+
+blockquote {
+   color:#666666;
+   margin:0;
+   padding-left: 1em;
+   border-left: 0.5em #EEE solid;
+}
+
+hr {
+   height: 0px;
+   border-bottom: none;
+   border-top-width: thin;
+   border-top-style: dotted;
+   border-top-color: #999999;
+}
+
+@media print {
+   * {
+      background: transparent !important;
+      color: black !important;
+      filter:none !important;
+      -ms-filter: none !important;
+   }
+
+   body {
+      font-size:12pt;
+      max-width:100%;
+   }
+
+   a, a:visited {
+      text-decoration: underline;
+   }
+
+   hr {
+      visibility: hidden;
+      page-break-before: always;
+   }
+
+   pre, blockquote {
+      padding-right: 1em;
+      page-break-inside: avoid;
+   }
+
+   tr, img {
+      page-break-inside: avoid;
+   }
+
+   img {
+      max-width: 100% !important;
+   }
+
+   @page :left {
+      margin: 15mm 20mm 15mm 10mm;
+   }
+
+   @page :right {
+      margin: 15mm 10mm 15mm 20mm;
+   }
+
+   p, h2, h3 {
+      orphans: 3; widows: 3;
+   }
+
+   h2, h3 {
+      page-break-after: avoid;
+   }
+}
+</style>
+
+
+
+</head>
+
+<body>
+<p>Create simulated data to show that a linear deconvolution of the expresison levels is not sufficient to figure out whether the eQTL arose from cancer or normal tissue component.
+Set root directiory for this project.</p>
+
+<pre><code class="r">source(&quot;theRootDir.R&quot;)
+</code></pre>
+
+<p>Note, I&#39;m creating a new operator to concatenate strings:</p>
+
+<pre><code class="r">&#39;%&amp;%&#39; &lt;- function(x, y)paste(x,y, sep= &quot;&quot;)
+</code></pre>
+
+<p>Create actual simulated Expression datasets of 1,000 samples and 600 genes&hellip;.</p>
+
+<pre><code class="r">cancerExpressionSimMat &lt;- numeric(600*1000)
+normalExpressionSimMat &lt;- numeric(600*1000)
+bulkExpressionSimMat &lt;- numeric(600*1000)
+normalEffectsIndependentOfCancer &lt;- numeric(600*1000)
+dim(cancerExpressionSimMat) &lt;- c(600, 1000)
+dim(normalExpressionSimMat) &lt;- c(600, 1000)
+dim(bulkExpressionSimMat) &lt;- c(600, 1000)
+dim(normalEffectsIndependentOfCancer) &lt;- c(600, 1000)
+numSamps &lt;- 250
+
+# I will use these as the simulated cell proportions, learned from TCGA data.
+set.seed(12345) # Setting seed before running all of the below will ensure consistent result each time this is run
+
+# Load the CPE tumor purity estimates for breast cancer.
+nComsProps &lt;- read.csv(paste(theRootDir, &quot;ncomms9971-s2.csv&quot;, sep=&quot;&quot;), as.is=T)
+nComsProps_brca &lt;- nComsProps[nComsProps[,2] == &quot;BRCA&quot; &amp; substring(nComsProps[,1], 14, 16) == &quot;01A&quot;, &quot;CPE&quot;] # exctract 01A (primary site) breast cancer samples.
+nComsProps_brca_noNa &lt;- nComsProps_brca[!is.na(nComsProps_brca)]
+
+# Proportions that I will use in subsequent analysis
+theProp &lt;- sample(nComsProps_brca_noNa, 1000) # select 1000 samples at random (without replacement).
+propInv &lt;- (1-theProp)
+</code></pre>
+
+<p>Create 100 genes with a mixture of <em>different</em> eQTL in both Cancer and normal component. Increment effect sizes from -1 to +1.</p>
+
+<pre><code class="r">simulatedEffectSizesCancer &lt;- seq(-.5, 0.49, .01) # Create 100 simulated effect sizes....
+simulatedEffectSizesNormal &lt;- sample(simulatedEffectSizesCancer) # randomeize the above
+for(i in 1:100)
+{
+  # NOTE: rnorm() will add noise and mean of 0 and sd of 1, because the real data were standardized to a mean of 0 and sd of 1.
+  cancerExpressionSimMat[i,] &lt;- c(rep(1, numSamps) + rnorm(numSamps), rep(1 + simulatedEffectSizesCancer[i], (numSamps*2)) + rnorm(numSamps), rep(1 + (simulatedEffectSizesCancer[i]*2), numSamps) + rnorm(numSamps))
+  normalExpressionSimMat[i,] &lt;- c(rep(1, numSamps) + rnorm(numSamps), rep(1 + simulatedEffectSizesNormal[i], (numSamps*2)) + rnorm(numSamps), rep(1 + (simulatedEffectSizesNormal[i]*2), numSamps) + rnorm(numSamps))
+  bulkExpressionSimMat[i, ] &lt;- (cancerExpressionSimMat[i,] * theProp) + (normalExpressionSimMat[i,] * propInv) # Combine the above to create a bulk expression data, assuming gene expression is additive based on the proportions.
+}
+</code></pre>
+
+<p>Create 100 genes with an eQTL in cancer only</p>
+
+<pre><code class="r">simulatedEffectSizesCancer[101:200] &lt;- seq(-.5, 0.49, .01)
+simulatedEffectSizesNormal[101:200] &lt;- rep(0, 100) 
+for(i in 101:200)
+{
+  cancerExpressionSimMat[i,] &lt;- c(rep(1, numSamps) + rnorm(numSamps), rep(1 + simulatedEffectSizesCancer[i], (numSamps*2)) + rnorm(numSamps), rep(1 + (simulatedEffectSizesCancer[i]*2), numSamps) + rnorm(numSamps))
+  normalExpressionSimMat[i,] &lt;- c(rep(1, numSamps) + rnorm(numSamps), rep(1 + simulatedEffectSizesNormal[i], (numSamps*2)) + rnorm(numSamps), rep(1 + (simulatedEffectSizesNormal[i]*2), numSamps) + rnorm(numSamps))
+  bulkExpressionSimMat[i, ] &lt;- (cancerExpressionSimMat[i,] * theProp) + (normalExpressionSimMat[i,] * propInv) # Combine the above to create a bulk expression data, assuming gene expression is additive based on the proportions.
+  normalEffectsIndependentOfCancer[i,] &lt;- residuals(lm(normalExpressionSimMat[i,]~cancerExpressionSimMat[i,])) # This will be used later, to show the interaction model values arne&#39;t correlated with normal.
+}
+</code></pre>
+
+<p>Create 100 genes with an eQTL in normal only</p>
+
+<pre><code class="r">simulatedEffectSizesCancer[201:300] &lt;- rep(0, 100) 
+simulatedEffectSizesNormal[201:300] &lt;- seq(-.5, 0.49, .01) 
+for(i in 201:300)
+{
+  cancerExpressionSimMat[i,] &lt;- c(rep(1, numSamps) + rnorm(numSamps), rep(1 + simulatedEffectSizesCancer[i], (numSamps*2)) + rnorm(numSamps), rep(1 + (simulatedEffectSizesCancer[i]*2), numSamps) + rnorm(numSamps))
+  normalExpressionSimMat[i,] &lt;- c(rep(1, numSamps) + rnorm(numSamps), rep(1 + simulatedEffectSizesNormal[i], (numSamps*2)) + rnorm(numSamps), rep(1 + (simulatedEffectSizesNormal[i]*2), numSamps) + rnorm(numSamps))
+  bulkExpressionSimMat[i, ] &lt;- (cancerExpressionSimMat[i,] * theProp) + (normalExpressionSimMat[i,] * propInv) # Combine the above to create a bulk expression data, assuming gene expression is additive based on the proportions.
+}
+</code></pre>
+
+<p>Create 100 genes with an eQTL in neither</p>
+
+<pre><code class="r">simulatedEffectSizesCancer[301:400] &lt;- rep(0, 100) 
+simulatedEffectSizesNormal[301:400] &lt;- rep(0, 100) 
+for(i in 301:400)
+{
+  cancerExpressionSimMat[i,] &lt;- c(rep(1, numSamps) + rnorm(numSamps), rep(1 + simulatedEffectSizesCancer[i], (numSamps*2)) + rnorm(numSamps), rep(1 + (simulatedEffectSizesCancer[i]*2), numSamps) + rnorm(numSamps))
+  normalExpressionSimMat[i,] &lt;- c(rep(1, numSamps) + rnorm(numSamps), rep(1 + simulatedEffectSizesNormal[i], (numSamps*2)) + rnorm(numSamps), rep(1 + (simulatedEffectSizesNormal[i]*2), numSamps) + rnorm(numSamps))
+  bulkExpressionSimMat[i, ] &lt;- (cancerExpressionSimMat[i,] * theProp) + (normalExpressionSimMat[i,] * propInv) # Combine the above to create a bulk expression data, assuming gene expression is additive based on the proportions.
+}
+</code></pre>
+
+<p>Create 100 genes with the SAME eQTL in Cancer and normal. </p>
+
+<pre><code class="r">simulatedEffectSizesCancer[401:500] &lt;- seq(-.5, 0.49, .01)
+simulatedEffectSizesNormal[401:500] &lt;- seq(-.5, 0.49, .01)
+for(i in 401:500)
+{
+  cancerExpressionSimMat[i,] &lt;- c(rep(1, numSamps) + rnorm(numSamps), rep(1 + simulatedEffectSizesCancer[i], (numSamps*2)) + rnorm(numSamps), rep(1 + (simulatedEffectSizesCancer[i]*2), numSamps) + rnorm(numSamps))
+  normalExpressionSimMat[i,] &lt;- c(rep(1, numSamps) + rnorm(numSamps), rep(1 + simulatedEffectSizesNormal[i], (numSamps*2)) + rnorm(numSamps), rep(1 + (simulatedEffectSizesNormal[i]*2), numSamps) + rnorm(numSamps))
+  bulkExpressionSimMat[i, ] &lt;- (cancerExpressionSimMat[i,] * theProp) + (normalExpressionSimMat[i,] * propInv) # Combine the above to create a bulk expression data, assuming gene expression is additive based on the proportions.
+}
+</code></pre>
+
+<p>Create 100 genes with SIMILAR eQTL in Cancer and Normal. I.e. add some noise to the &ldquo;cancer&rdquo; eQTL effect size to create a &ldquo;normal&rdquo; effect size.</p>
+
+<pre><code class="r">simulatedEffectSizesCancer[501:600] &lt;- seq(-.5, 0.49, .01)
+a &lt;- seq(-.5, 0.49, .01) + rnorm(100, 0, .1)
+aScaled &lt;- (a / max(a)) *.5 # Scale this so the effects won&#39;t be bigger than .5, to be consitent with everything else.
+simulatedEffectSizesNormal[501:600] &lt;- aScaled
+for(i in 501:600)
+{
+  cancerExpressionSimMat[i,] &lt;- c(rep(1, numSamps) + rnorm(numSamps), rep(1 + simulatedEffectSizesCancer[i], (numSamps*2)) + rnorm(numSamps), rep(1 + (simulatedEffectSizesCancer[i]*2), numSamps) + rnorm(numSamps))
+  normalExpressionSimMat[i,] &lt;- c(rep(1, numSamps) + rnorm(numSamps), rep(1 + simulatedEffectSizesNormal[i], (numSamps*2)) + rnorm(numSamps), rep(1 + (simulatedEffectSizesNormal[i]*2), numSamps) + rnorm(numSamps))
+  bulkExpressionSimMat[i, ] &lt;- (cancerExpressionSimMat[i,] * theProp) + (normalExpressionSimMat[i,] * propInv) # Combine the above to create a bulk expression data, assuming gene expression is additive based on the proportions.
+}
+</code></pre>
+
+<p>Lets Now run an analysis and see how many &ldquo;cancer&rdquo; and &ldquo;normal&rdquo; eQTLs we can recover&hellip;</p>
+
+<pre><code class="r">genotype &lt;- c(rep(0, numSamps), rep(1, (numSamps*2)), rep(2, numSamps)) # genotype is always the same
+# genotype &lt;- c(rep(1, numSamps), rep(2, (numSamps*2)), rep(3, numSamps)) # This produces the same results as above
+# genotype &lt;- c(rep(2, numSamps), rep(3, (numSamps*2)), rep(4, numSamps)) # However, this produces slightly different results....? Not sure if it can be argued that one makes more sense.? For now, lets stick to convention (encoding genotypes as 0,1,2)
+cancerEffectInteractionModel &lt;- numeric()
+normalEffectInteractionModel &lt;- numeric()
+bulkEffectConventionalModel &lt;- numeric()
+pValuesBulkTumor &lt;- numeric()
+pValuesCancerInteractionModel &lt;- numeric()
+interactionTermPvalue &lt;- numeric()
+pValuesCancerInteractionModel_randomCpe &lt;- numeric()
+</code></pre>
+
+<p>Create vector of the estimated proportions, but add measurement noise, to reflect the fact that these will not be estimated exactly in the real data.</p>
+
+<pre><code class="r">thePropNoisier &lt;- theProp + rnorm(length(theProp), 0,0.1)
+</code></pre>
+
+<p>Quantile normalize the noise added proportions so they are on an identical distribution to the original proportions (but have noise added, i.e. they will be reordered to some extent).</p>
+
+<pre><code class="r">thePropSort &lt;- sort(theProp)
+thePropNoise &lt;- thePropSort[rank(thePropNoisier)]
+propInvNoise &lt;- (1-thePropNoise)
+</code></pre>
+
+<p>Plot this correlation (supplementary figure)</p>
+
+<pre><code class="r">thisCor &lt;- cor(thePropNoise, theProp) # this correlation is reasonable based on the correlations achieved by different genomics methods.
+dir.create(theRootDir %&amp;% &quot;paper/figures/&quot;, recursive=T, showWarnings=F)
+svg(file=paste(theRootDir, &quot;paper/figures/suppFig1.svg&quot;, sep=&quot;&quot;), width=4, height=4)
+plot(theProp, thePropNoise, main=paste(&quot;Pearson Correlation = &quot;, format(round(thisCor, 2), nsmall = 2)), las=1, cex.axis=.8, pch=20, col=&quot;#00000099&quot;, xlab=&quot;Simulated known proportion&quot;, ylab=&quot;Simulated measured (noise added) proportion&quot;, bty=&quot;l&quot;)
+dev.off()
+</code></pre>
+
+<pre><code>## pdf 
+##   2
+</code></pre>
+
+<p>Recover the eQTLs using the different types of models (i.e. interaction (cancer) and conventional (bulk tumor)</p>
+
+<pre><code class="r">for(i in 1:nrow(bulkExpressionSimMat))
+{
+  cancerEffectInteractionModel[i] &lt;- coef(summary(lm(bulkExpressionSimMat[i,]~genotype*propInvNoise)))[2, 1] # We use this inverse, as we want the main efffect &quot;genotype&quot; to correspond to 0% normal cells (which is 100% cancer.).
+  normalEffectInteractionModel[i] &lt;- coef(summary(lm(bulkExpressionSimMat[i,]~genotype*thePropNoise)))[2, 1]
+  bulkEffectConventionalModel[i] &lt;- coef(summary(lm(bulkExpressionSimMat[i,]~genotype)))[2, 1]
+  pValuesBulkTumor[i] &lt;- coef(summary(lm(bulkExpressionSimMat[i,]~genotype)))[2, 4]
+  pValuesCancerInteractionModel[i] &lt;- coef(summary(lm(bulkExpressionSimMat[i,]~genotype*propInvNoise)))[2, 4]
+  pValuesCancerInteractionModel_randomCpe[i] &lt;- coef(summary(lm(bulkExpressionSimMat[i,]~genotype*sample(propInvNoise))))[2, 4]
+  interactionTermPvalue[i] &lt;- coef(summary(lm(bulkExpressionSimMat[i,]~genotype*propInvNoise)))[4, 4]
+}
+fdrCancerInteraction &lt;- p.adjust(pValuesCancerInteractionModel, method=&quot;BH&quot;)
+fdrBulkTumor &lt;- p.adjust(pValuesBulkTumor, method=&quot;BH&quot;)
+fdrSigInCancerInteraction &lt;- fdrCancerInteraction &lt; 0.05
+fdrSigInBulkTumor &lt;- fdrBulkTumor &lt; 0.05
+sum(p.adjust(pValuesCancerInteractionModel_randomCpe, method=&quot;BH&quot;) &lt; 0.05) # we get the fewest associations with a randomly arranged tumor purity estimate (same as what happens TCGA breast cancer).
+</code></pre>
+
+<pre><code>## [1] 217
+</code></pre>
+
+<p>QQ-plot of the simulated P-values for bulk, cancer model and random CPE model.</p>
+
+<pre><code class="r">convSort &lt;- sort(-log10(pValuesBulkTumor), decreasing=T)
+intSort &lt;- sort(-log10(pValuesCancerInteractionModel), decreasing=T)
+intSortRand &lt;- sort(-log10(pValuesCancerInteractionModel_randomCpe), decreasing=T)
+</code></pre>
+
+<p>Make a QQ plot</p>
+
+<pre><code class="r">plot(-log10(1:length(pValuesBulkTumor) / length(pValuesBulkTumor)), convSort, xlab=&quot;-Log10 P-Value (uniform distribution)&quot;, ylab=&quot;-Log10 P-Value (measured)&quot;, cex.axis=0.8, las=1, col=&quot;#1a964166&quot;, pch=20, bty=&quot;l&quot;)
+points(-log10(1:length(pValuesCancerInteractionModel) / length(pValuesCancerInteractionModel)), intSort, pch=20, col=&quot;#1f78b466&quot;)
+points(-log10(1:length(pValuesCancerInteractionModel_randomCpe) / length(pValuesCancerInteractionModel_randomCpe)), intSortRand, pch=20, col=&quot;#ff7f0066&quot;)
+abline(0,1, col=&quot;red&quot;)
+</code></pre>
+
+<p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAfgAAAH4CAIAAAApSmgoAAAACXBIWXMAAAsSAAALEgHS3X78AAAgAElEQVR4nOzdeWBU5b0+8O/ZZp/MZCb7vicsssu+ySKIirYsaq1rL9W6VLD1tlVbre1Ve69Ya62tYrGIdV9RrFZAFBQUMewQAiEbWWcmk8nsc5bfH+FnBUfWZE5y8nz+SoaZOc8geXzznnPel1EUhQAAQLtYtQMAAEDvQtEDAGgcih4AQONQ9AAAGoeiBwDQOBQ9AIDGoegBADQORQ8AoHEoegAAjUPRAwBoHIoeAEDjUPQAABqHogcA0DgUPQCAxqHoAQA0DkUPAKBxKHoAAI1D0QMAaByKHgBA41D0AAAah6IHANA4FD0AgMah6AEANA5FDwCgcSh6AACNQ9EDAGgcih4AQONQ9AAAGoeiBwDQOBQ9AIDGoegBADQORQ8AoHEoegAAjUPRAwBoHIoeAEDjUPQAABqHogcA0DgUPQCAxqHoAQA0DkUPAKBxKHoAAI1D0QMAaByKHgBA41D0AAAah6IHANA4FD0AgMah6AEANA5FDwCgcSh6AACNQ9EDAGgcih4AQONQ9AAAGoeiBwDQOBQ9AIDGoegBADQORQ8AoHEoegAAjetnRe92u5uamtROAQDQn/Szol+/fv1bb72ldgoAgP6knxU9AACcKRQ9AIDGoegBADQORQ8AoHEoegAAjUPRAwBoHIoeAEDjUPQAABqHogcA0DgUPQCAxqHoAQB6ni/ib+hqCYlhtYMQEfFqBwAA0Jo6X/PK3W/a9BZXqOMXY2+06a3q5kHRAwD0sBpvQ7E9m2U4A6ev8zUPS1W56DF1AwDQw/S8LihGiSgkho28Qe04KHoAgJ42PLW8LDl/v7tmfNbwYnuu2nEwdQMA0NPMgnFG3tgZeWPVDnIMRvQAABqHogcA0DgUPQCAxqHoAQA0DkUPAKBxKHoAAI1D0QMAaByKHgBA41D0AAAah6IHANA4FD0AgMah6AEANA5FDwCgcSh6ANAsUZYUUtROoT4sUwwAfUhEin52dMe6uq1zCydNyBrBs9zZvY9Cypamne8f2Swq8q0jrsy2pPVszv4FI3oA6EP2uA7td9cMchZtb9lX3VF31u/T4nd93LC9LLmgIrlwr+tQDybsj1D0ANCLmvxtNd7GqBQ7zecHYyGjYCAio2AIxkJnfVxJkTmGISLmrN9CQ1D0ANBbvmrd/4/db71RvW5D/eeiLJ7OS4rtuTXehragu66rudCec9aHzjCnjEoffKSzcb/nSNE5vI82YI4eAHrLa9UfDnYUEdFuV/V5KWXZ1lNPlGdZ0v577I+8EZ/TaDedw7baPMvNzBs3Jn2wntcbef1Zv482oOgBoLdckHP+UX8rz/LBWNisM57mq6w6k1VnOvejMwxjNySd+/toAKZuAKC3jM4YnGVJ2+OqXlw+x663qh1n4MKIHgB6i8Ngu7Bg4oUFE9UOMtBhRA8AoHEoegAAjUPRAwBoHIoeAEDjUPQAABqHogcA0DgUPQCAxqHoAQA0DkUPAKBxKHoAAI1D0QMAaByKHgBA47CoGQCcsWZ/e03nUSOvH+Is1vM6tePAKaDoAeDM+CL+J3e+VGTLCcWi/lhwas5otRPBKWDqBgDOTEeky66zCayQpDe/X/up2nHg1DCiB4Azk2K0e8Jei84YEsOXFE1VOw6cGooeAE7kiwZqO4/qOKEkOY9nuBP+1CwYl425trbzqIHXVTgKVUkIZwRFDwDHiUqxhz9/JtuSFhZj47POm5Q98tvPSTHaU4z2xGeDs4M5egA4jivUYddbbXprutmx9sgmteNAD0DRA8BxrDqzLxqUFDkkRmbkjlU7DvQATN0AwHGsOvNPRiw+6KnV87phqWVqx4EegKIHgBNlW9KyLWlqp4Aeg6kbAACNQ9EDAGgcih4AQONQ9AAAGoeiBwDQuEQXfWdnZ15eHhHJsvzTn/501qxZF198scvlSnAMAICBI9FF/+tf/9rtdhPRhg0bWltb161bt2DBguXLlyc4BgDAwJHQ6+i3bdvW1dWVm5tLRJs2bRo3bhwRjR8/fuXKld9+ciAQaG1tPeHB5uZmSZISEBUAQDMSV/SiKN59993//Oc/p06dSkQej2fYsGFElJ+f7/F4vv38jz/++O233z7hwa1bt2ZkZNx5550JCAwAoA2JK/onnnhi8eLFaWnHbrdzOBwNDQ1EVF9f73A4vv38efPmzZs374QHly1b1tzc3NtRAQaCQx31rUF3siGpwlHEMozacaAXJa7ov/rqq5aWltdff72hoWHevHnLli1btWoVEW3fvn3SpEkJiwEw0LQEXC0Bl8Noy7Nmfv1gQ1fLC/vfy03KcIU6ZEUZmlKiYkLobYkr+ueee677i4qKivfee0+W5TVr1lx++eVEtGLFioTFABhQmvxtT+98Nd2c4gp1LC6fW+4o6H68PdiRZnYKLJ9mcrYF48ydgpaosKjZgQMHiIhl2T//+c+JPzrAgNIScGVa0syC0cQbmgPtXxd9msnRFnDzljRP2DsmfbCqGaHXYfVKAC2z6a0dYZ9ZMHaEfcPTKr5+PMeafv3Qyxr9ralGR0lyrooJIQFQ9ABaVmTLmV8yvSXgHpJScsJEfF5SZl5S5ne9ELQERQ+gZQzDDHYWD3YWqx0E1IS1bgAANA5FDwCgcSh6AACNQ9EDAGgcih4AQONQ9AAAGoeiBwDQOBQ9AIDGoegBADQOd8YCaMeRzsb2YEeqKbnQlqN2FuhDUPQAGlHjbXxh/9p0s7M16L560MXoevgapm4ANKIl4Mq0pBp5Q6Y5rTngUjsO9CEoeoD+6mhXW423MSrFur91Gu2uoFeSJVeow2mwq5sN+hRM3QD0S1+07P6wdquB0w9JKZqZP15g+bLk/MtKL3CHvOOyhpUl56sdEPoQFD1Av/R29UeDnEVEtNtVfV5qWbYljWGYCkeh2rmgL8LUDUC/ND33fFEWiSgYC5sFo9pxoE/DiB6gXxqdMZhv4yRFHpt5nl1vVTsO9GkoeoB+yWGwXZA3Vu0U0D9g6gYAQONQ9AAAGoeiBwDQOBQ9QB/liwZag25Jkbu/behq2dF2oNnfrm4q6I9wMhagL6ry1D6/7x0jpx+TOXRG/ri6zqZ/7lubakpuCbhvGr4wy5KmdkDoT1D0AH1Rva+5LLmAYZhd7QcrnIVN/ra8pAye5TmGPepvQ9HDGcHUDUAfpZBMRFFZFFjeprd6wj4i8kb8dn2S2tGgn8GIHkBNESlKCul5nawoBzw1HWFfutlZYs8blla2/svPWYa9vOSCTHNqmskpK7In7BuZVlFiz1U7NfQzKHoA1Wxv3ffOoY8UYhaUzeIYdm3NJ6kmx4b6L64bMj8vKfOhqXfIisIxLBFxDDsirULtvNBfYeoGQB0hMfL2oY9KkvNLk/NeqfqgJejKMDsFlk8zOVyhDiJiiOlueYBzhH9GAAklK3Jb0OOL+hVFYYg59qhCqUZHS8ATFqOtAXeqyaFqRtAaTN0AJI6kyBsbtm1r3hOVYt8rmzm/ZPrbhzbIinJFxdyhqSUmweAJdV5YOCHXmqF2UtAUFD1A4rQHPdua9+RY04noxf3vPTjljqEpJd0nY4moxJ5H2BgKegGKHqDXBcXwfncNy7CZZmdUjhGRRMfud9VzOlWjwYCAogfoXbKifNpYWd1RJ5NSnlxwafH0V6s+kBXljlFXqx0NBgoUPUDv6or6P2/eVWDLJqJPmyp/OfZHD065Q+1QMLCcrOhDoRARGY3YpQzgbETEaEiKmHhjMBYOixFiaGLWCMzVQOKdWPSBQODFF198++23P/vss0AgQEQmk2nSpEmXXXbZVVddZTab1QgJ0P80dLU8tfM1I68fmzn0p6N+cNBbzzLMsNRyhmFO/WKAHnXcdfR//etfx44dW19ff+edd1ZWVgaDwWAwuHPnzp/97GcNDQ3jxo3729/+plZQgP6lylNbmpyXn5S513XIFwtOzRk9OXtUkg5DJVDBcSN6h8NRWVmp0x33q2Vubm5ubu706dPvueeeN998M7HxAPorjmEVRSaGlWSZZzi148CAdtyI/oorrjih5b9Jp9NdccUVvR8JQAvOSy074Kmt6jgyKn1Qvi1L7TgwoB03orfb49ytwTCM2WxubGxMVCQALUgx2h+eujQmiwKLa9tAZceN6Gtra2tra3/zm9+MGjVq7dq1+/fvf//9988///wHHnhArXwA/RpaHvoCRlGUEx7Kzc3dunVrdnZ297etra1jxoxpaGhIeLY4li1b1tzc/NJLL6kdBOA4oiy6Q51WvflQR/1LB95niG4avigvKVPtXABEca+jl2X5yJEjXxf94cOHcUEYwEmExMhvP/urXW9xhzsVhUaklSuK8tcdLz80dana0QCI4hb9XXfdddlll910001FRUU1NTVPPfXUb3/728QnA+j7qjvq2oIeb7gry5zmMCYlGSw7W6qIiGEYhmFlRWExSII+IE7RL126dOTIkW+88ca6deuysrLeeeediRMnJj4ZQB9X23n0lap/51jSqjpqJVl2GJN0jG5QSnF9Z1NUkRaVX4iWhz4i/pmiadOmTZ48ub29PT09HfM2AF8TZYllGFfI2+Rva/S1OA02juVK7fkBMXjAc+SCvLFjMgZHJVFgebveqnZYgGPiFH1TU9O11167detWQRAqKyuvvPLKF154oaioKPHhAPqUL1p2v3NoY1AMi7Jc4Sio8zX7o6HhaaXtwY7vl82qcBSqHRAgvjhbCd5www0VFRUul8tm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saPRaBw8eHBKSopjbUeOHImKiqq5feDAgd69e7u5uY0aNerq1avV2vDFF1/MmjVLEIRaX56UlDRkyJAVK1YEBwd37tx57969AIqLi5ctWwZgwoQJRUVFAwcOzMvLq/leJSUlxcTEvPHGG7169frll1+io6MXLlzo7+8/ZMiQhISEAQMGeHh4LFiwoFp73nvvvZCQkJCQkDVr1qgl9sPJsjxv3jwfHx9/f//XX38dwMMPPyzLckRERGJiov1Y9v0BVFRUTJs2zcvLKyoq6syZM3W9S/Z6rl69an9trT2q+W7o9fqJEydu2LCh5vklrQoFPalFWlra448//sEHH6Snp3t5eT377LMATp8+/dJLL23cuPHw4cOfffaZfeeFCxe+//77Pj4+9pLU1NT7779f3e7Zs2d6erqiKHUd6+jRo8nJyV27dnUsnD59+rfffqtux8fHT5kyJT8///nnn1+/fn1WVla3bt1Wrlx5y15cv359woQJy5Yty87OjoiImDlzZrUdtm3b9tBDD9VTw8mTJ61Wa0pKSmxs7OLFix2fio+P9/T0PH/+fElJSc33Sn1tZmZmXFwcgCNHjvTt2zc5ObmysnL69OmbN2/esWPHP/7xj4KCAnuF+/fvf+2119avX5+QkPCvf/2rWkvi4+P37Nlz/PjxXbt2vfnmm6mpqTt37hRFMTU11c3NzfFYdlu2bBk9enR2dvbIkSNjY2NlWa61j471qCW1nv263o1hw4Zt27atnveQtAaSsxtAWqPvvvtu/PjxI0aMAPDuu+8GBQXJsvzNN9/Mnj17wIABABYtWlTroLnKZDJ5eHio256enjabrbS01NPT03GfmJgYdWi4oqLihRdesF9pqqZMmfLCCy9cu3atffv28fHx3377rYeHR1JSUufOnc1mc1BQUFpa2i17sX379mHDho0dOxbAypUr/f39FUURhKqLG1mWjx49GhERUU8NgiAsWrRIkqSZM2fWFWe1vldq/e+//75er//ll18CAwMfffRRAOpunTp16tSpU3BwcHFxsa+vr1pPfHz8k08+OXToUABvvPHGmDFjHI9is9kURSkpKenTp092dna1N9N+LMfbJP369Zs1axaApUuXfvzxx9X+BqpHXT2q9d2IiIg4fPhwA2smzkJX9HejVatWeXt7e3t724cIqsnJybGPzLRr106v1+fl5V2+fDk0NFQttG/UysfHRx36B1BSUiKKoru7e7V9vvrqq5MnT549e7akpOTdd9+t1qoOHTrExMRs2bIlMTGRMTZo0CCDwbBhw4bBgwcPHz78p59+qufonHN1Iysra+fOnepYU/fu3XU6neON0+vXr3t5edl/IdV8OYDAwEBJkgCo/9aq1vcKQEBAgF6vV8vt3ZckyXG7Wj323zrh4eHVjjJ58uR58+aNHTs2PDw8Li6u2l9Ijseys7dKkqROnTpdu3atrm42sEe1vhvBwcGlpaWVlZV11UZaAwr6u9Gzzz5bWFhYWFg4Z86cWncICAjIyMhQt69fv26xWPz9/QMCAjIzM9XC7OzseuoPDw+/cOGCup2UlBQWFma/jrYLCgpSI9g+uF+tVeroTXx8fGxsLGNs06ZNmzdv3rZt26FDh2bPnl3zoPb5J/a2BQQETJw48dKlS5cuXUpLSztx4kSHDh3qanPNlwNgjNXTTfvN8fe0AAADUklEQVRRar5XAERRvOVrHQUGBtr/TLFXaJeVlTVp0qT09PQtW7Z8+eWXq1evdny21mOlp6erGxaL5dKlSyEhIaijmw3sUa3vhjp1qp5fG6Q1oKAnAFBUVFR4g9ls/v3vfx8fH69OjFm4cOHYsWMlSZo8efIXX3yRmJiYk5Pz97//vZ7aYmJirl+/vm3btoqKipUrVzZ8np+jCRMm/PTTT2vXro2NjQWQk5Oj1+sZYwkJCe+9915BQYHjoLO3t/epU6dOnz5tMpk++OADtXD06NHff//9vn37CgsLly1bNm3aNMeo8vPzKyoqUv/yqPXlDVTre3UH/Z08efKnn36akJCQm5u7dOnSaqm6adOmsWPHXrlyxcfHRxRFg8Ggltv/cqrp5MmTq1evNplMr776apcuXTp37lxPNx3rua0eXb582dXV1Wg03kGXSYuhoCcA0KVLF58b1q1bFxER8dlnnz311FOhoaEmk+nDDz8E0L9//6VLlz7yyCNDhw594oknag562EmStHXr1iVLloSEhHh6er7yyit30CQvL6/f/e53kiT1798fwMyZM41GY2ho6IIFC15//fXk5GTHyTzdunWbP39+dHR0TEzMvHnz1MKgoKC1a9fOmzcvKCjowIED69evd6xfFMWBAwempqbW9fIGqvW9ugPR0dFLliyZMmVK3759p06dar81qnryySc7derUrVu3Pn369OnTRx18nzJlSmhoaFlZWa0Vzp07d/v27WFhYUePHv36668ZY3V1s1o9t9Wj1NTU6OjoO+syaTH0NxdpqIyMjOLiYnU6zbFjx15++eU9e/Y4u1GNsmLFCkEQak5zJA23dOnSkJAQ9YMUpNWiK3rSUBkZGZMmTbpy5YrFYlm+fPmoUaOc3aLGmj179tq1a+uZ+knqZ7FYNm/ePH36dGc3hNwCBT1pqKFDh86cObNPnz6hoaF6vf7pp592dosay9/fPzY2dteuXc5uSFsVHx8/f/78aqNMpBWioRtCCNE4uqInhBCNo6AnhBCNo6AnhBCNo6AnhBCNo6AnhBCNo6AnhBCNo6AnhBCNo6AnhBCNo6AnhBCNo6AnhBCNo6AnhBCNo6AnhBCNo6AnhBCNo6AnhBCNo6AnhBCN+//8ge8f45iOIwAAAABJRU5ErkJggg==" alt="plot of chunk unnamed-chunk-16"/></p>
+
+<p>The interaction term itself is doing a poor job of picking out differential eQTLs. At least at only 1,000 samples. I.e. more samples are likely required for this to be useful.</p>
+
+<pre><code class="r">print(sum(p.adjust(interactionTermPvalue, method=&quot;BH&quot;) &lt; 0.05))
+</code></pre>
+
+<pre><code>## [1] 1
+</code></pre>
+
+<p>Calculate sensitivy and specificity for interaction term</p>
+
+<pre><code class="r">hasSigIntTerm &lt;- which(p.adjust(interactionTermPvalue, method=&quot;BH&quot;) &lt; 0.05)
+isDifferentCancerNormal &lt;- which(simulatedEffectSizesCancer != simulatedEffectSizesNormal)
+sum(hasSigIntTerm %in% isDifferentCancerNormal) / length(isDifferentCancerNormal)
+</code></pre>
+
+<pre><code>## [1] 0.002512563
+</code></pre>
+
+<p>Plot Figures 1a and 1b, which show how the bulk and interaction models performing.</p>
+
+<pre><code class="r">colsCanModel &lt;- rep(&quot;#377eb8BB&quot;, 100)
+colsBulkModel &lt;- rep(&quot;#377eb8BB&quot;, 100)
+colsCanModel[which(fdrCancerInteraction[201:300] &lt; 0.05)] &lt;- &quot;#e41a1cBB&quot;
+colsBulkModel[which(fdrBulkTumor[201:300] &lt; 0.05)] &lt;- &quot;#e41a1cBB&quot;
+dir.create(theRootDir %&amp;% &quot;paper/figures/figure1&quot;, recursive=T, showWarnings=F)
+svg(file=paste(theRootDir, &quot;paper/figures/figure1/Fig1a_scatter.svg&quot;, sep=&quot;&quot;), width=3.5, height=3.5)
+plot(simulatedEffectSizesNormal[201:300], bulkEffectConventionalModel[201:300], col=colsBulkModel, pch=20, bty=&quot;l&quot;, las=1, xlab=&quot;Simulated effect size normal&quot;, ylab=&quot;Conventional model Recovered effect size&quot;, cex.axis=0.8)
+dev.off()
+</code></pre>
+
+<pre><code>## pdf 
+##   2
+</code></pre>
+
+<pre><code class="r">svg(file=paste(theRootDir, &quot;paper/figures/figure1/Fig1b_scatter.svg&quot;, sep=&quot;&quot;), width=3.5, height=3.5)
+plot(simulatedEffectSizesNormal[201:300], cancerEffectInteractionModel[201:300], col=colsCanModel, pch=20, bty=&quot;l&quot;, las=1, xlab=&quot;Simulated effect size normal&quot;, ylab=&quot;Interaction model Recovered effect size&quot;, cex.axis=0.8)
+dev.off()
+</code></pre>
+
+<pre><code>## pdf 
+##   2
+</code></pre>
+
+<pre><code class="r">print(cor.test(simulatedEffectSizesNormal[201:300], bulkEffectConventionalModel[201:300]))
+</code></pre>
+
+<pre><code>## 
+##  Pearson&#39;s product-moment correlation
+## 
+## data:  simulatedEffectSizesNormal[201:300] and bulkEffectConventionalModel[201:300]
+## t = 21.34, df = 98, p-value &lt; 2.2e-16
+## alternative hypothesis: true correlation is not equal to 0
+## 95 percent confidence interval:
+##  0.8648218 0.9366686
+## sample estimates:
+##      cor 
+## 0.907146
+</code></pre>
+
+<pre><code class="r">print(cor.test(simulatedEffectSizesNormal[201:300], cancerEffectInteractionModel[201:300]))
+</code></pre>
+
+<pre><code>## 
+##  Pearson&#39;s product-moment correlation
+## 
+## data:  simulatedEffectSizesNormal[201:300] and cancerEffectInteractionModel[201:300]
+## t = 1.0157, df = 98, p-value = 0.3123
+## alternative hypothesis: true correlation is not equal to 0
+## 95 percent confidence interval:
+##  -0.0962836  0.2926167
+## sample estimates:
+##       cor 
+## 0.1020648
+</code></pre>
+
+<p>Calculate Sensitivity across all data points (TP / P)
+A function to calculate sensitivty, specificy and FDR from a vectors of estimated beta and p-values. Controlling for a specific FDR.
+I would like this to also return the intex of the false positives, so I can deduced where they originated!</p>
+
+<pre><code class="r">calcSensitivitySpecificityFdr &lt;- function(estimatedBetas, pValues, realBetas, fdr=0.05)
+{
+  # Sensitivty (true positive rate) = number of true positives / number of real positives. (TP/P)
+  # Calculate the number of &quot;positives&quot;, i.e. the number of effects really different from zero.
+  positives &lt;- which(realBetas != 0)
+  numPositives &lt;- sum(realBetas != 0)
+
+  # Calculate the number of True Positives, i.e. the number of effects really different from zero that were identified by our model.
+  correctDirectionality &lt;- which((estimatedBetas * realBetas) &gt; 0)
+  isSignificant &lt;- which(p.adjust(pValues, method=&quot;BH&quot;) &lt; fdr)
+  numTruePositives &lt;- sum((isSignificant %in% correctDirectionality) &amp; (isSignificant %in% positives)) # things significant with correct directionality.
+
+  sensitivity &lt;- numTruePositives/numPositives
+
+  # Specificity (true negative rate) = the number of true negatives / number of real negatives.
+  # the number of real negatives
+  negatives &lt;- which(realBetas == 0)
+  numNegatives &lt;- sum(realBetas == 0)
+  notSignificant &lt;- which(p.adjust(pValues, method=&quot;BH&quot;) &gt; fdr)
+  numTrueNegatives &lt;- sum(notSignificant %in% negatives) # How many negatives were correctly assigned as &quot;not significant&quot;
+  specificity &lt;- numTrueNegatives/numNegatives
+
+  # Calculate the type I error rate, i.e. the type I error rate....! I.e. the proportion of things called positive that are actually negative.
+  MeasuredFalseDiscoveryRate &lt;- sum(isSignificant %in% negatives) / length(isSignificant)
+  FalseDiscoveriesIndex &lt;- isSignificant[isSignificant %in% negatives]
+
+  return(list(Sensitivty=sensitivity, Specificty=specificity, MeasuredFalseDiscoveryRate=MeasuredFalseDiscoveryRate, numSigEQtls=length(isSignificant), FalseDiscoveriesIndex=FalseDiscoveriesIndex))
+}
+</code></pre>
+
+<p>Print the sensitivity and specificity for the cancer and bulk models.</p>
+
+<pre><code class="r">print(calcSensitivitySpecificityFdr(cancerEffectInteractionModel, pValuesCancerInteractionModel, simulatedEffectSizesCancer))
+</code></pre>
+
+<pre><code>## $Sensitivty
+## [1] 0.5833333
+## 
+## $Specificty
+## [1] 0.9607843
+## 
+## $MeasuredFalseDiscoveryRate
+## [1] 0.03333333
+## 
+## $numSigEQtls
+## [1] 240
+## 
+## $FalseDiscoveriesIndex
+## [1] 234 264 310 316 317 385 396 400
+</code></pre>
+
+<pre><code class="r">print(calcSensitivitySpecificityFdr(bulkEffectConventionalModel, pValuesBulkTumor, simulatedEffectSizesCancer))
+</code></pre>
+
+<pre><code>## $Sensitivty
+## [1] 0.7954545
+## 
+## $Specificty
+## [1] 0.8039216
+## 
+## $MeasuredFalseDiscoveryRate
+## [1] 0.1117318
+## 
+## $numSigEQtls
+## [1] 358
+## 
+## $FalseDiscoveriesIndex
+##  [1]  51 201 202 204 205 206 207 209 211 212 214 217 220 222 225 226 231
+## [18] 240 241 273 278 279 281 282 284 285 286 287 288 289 290 292 294 296
+## [35] 297 298 299 300 339 400
+</code></pre>
+
+<p>What types of eQTL are driving the false positives?</p>
+
+<pre><code class="r">classesOfEqtlsInSimulation &lt;- c(&quot;Different eQTLs&quot;, &quot;Cancer Only eQTLs&quot;, &quot;Normal Only eQTLs&quot;, &quot;No eQTLs&quot;, &quot;Same eQTL&quot;, &quot;Similar eQTL&quot;)
+bigClassesVec &lt;- as.character(sapply(classesOfEqtlsInSimulation, rep, 100))
+falsePositivesByType_tumor &lt;- table(bigClassesVec[calcSensitivitySpecificityFdr(bulkEffectConventionalModel, pValuesBulkTumor, simulatedEffectSizesCancer)$FalseDiscoveriesIndex])
+print(falsePositivesByType_tumor)
+</code></pre>
+
+<pre><code>## 
+##   Different eQTLs          No eQTLs Normal Only eQTLs 
+##                 1                 2                37
+</code></pre>
+
+<pre><code class="r">falsePositivesByType_cancer &lt;- table(bigClassesVec[calcSensitivitySpecificityFdr(cancerEffectInteractionModel, pValuesCancerInteractionModel, simulatedEffectSizesCancer)$FalseDiscoveriesIndex])
+print(falsePositivesByType_cancer)
+</code></pre>
+
+<pre><code>## 
+##          No eQTLs Normal Only eQTLs 
+##                 6                 2
+</code></pre>
+
+<p>Create tables showing how sensitivety and specificity break down by type of eQTL.</p>
+
+<pre><code class="r">bulkSummaryList &lt;- list()
+cancerModelSummaryList &lt;- list()
+for(i in 0:5)
+{
+  lowNum &lt;- 1 + (i*100)
+  highNum &lt;- ((i+1)*100)
+  bulkSummaryList[[i+1]] &lt;- calcSensitivitySpecificityFdr(bulkEffectConventionalModel[lowNum:highNum], pValuesBulkTumor[lowNum:highNum], simulatedEffectSizesCancer[lowNum:highNum])
+  cancerModelSummaryList[[i+1]] &lt;- calcSensitivitySpecificityFdr(cancerEffectInteractionModel[lowNum:highNum], pValuesCancerInteractionModel[lowNum:highNum], simulatedEffectSizesCancer[lowNum:highNum])
+}
+names(bulkSummaryList) &lt;- classesOfEqtlsInSimulation
+names(cancerModelSummaryList) &lt;- classesOfEqtlsInSimulation
+</code></pre>
+
+<p>Supplementary Tables 1</p>
+
+<pre><code class="r">bulkSummarTable &lt;- do.call(cbind, bulkSummaryList)
+bulkSummarTable_withglobalInfo &lt;- rbind(bulkSummarTable[-5,], rep(0, 6))
+bulkSummarTable_withglobalInfo[5, names(falsePositivesByType_tumor)] &lt;- falsePositivesByType_tumor
+rownames(bulkSummarTable_withglobalInfo)[5] &lt;- &quot;Number of False Discoveries (globally)&quot;
+print(bulkSummarTable_withglobalInfo)
+</code></pre>
+
+<pre><code>##                                        Different eQTLs Cancer Only eQTLs
+## Sensitivty                             0.7676768       0.7979798        
+## Specificty                             0               1                
+## MeasuredFalseDiscoveryRate             0.01265823      0                
+## numSigEQtls                            79              79               
+## Number of False Discoveries (globally) 1               0                
+##                                        Normal Only eQTLs No eQTLs
+## Sensitivty                             NaN               NaN     
+## Specificty                             0.65              1       
+## MeasuredFalseDiscoveryRate             1                 NaN     
+## numSigEQtls                            35                0       
+## Number of False Discoveries (globally) 37                2       
+##                                        Same eQTL Similar eQTL
+## Sensitivty                             0.8383838 0.8080808   
+## Specificty                             1         1           
+## MeasuredFalseDiscoveryRate             0         0           
+## numSigEQtls                            83        81          
+## Number of False Discoveries (globally) 0         0
+</code></pre>
+
+<pre><code class="r">write.csv(bulkSummarTable_withglobalInfo, file=paste(theRootDir, &quot;paper/suppTab1.csv&quot;, sep=&quot;&quot;))
+
+
+# Supp Table 2
+cancerModelSummaryTable &lt;- do.call(cbind, cancerModelSummaryList)
+cancerModelSummaryTable_withglobalInfo &lt;- rbind(cancerModelSummaryTable[-5,], rep(0, 6))
+cancerModelSummaryTable_withglobalInfo[5, names(falsePositivesByType_cancer)] &lt;- falsePositivesByType_cancer
+rownames(cancerModelSummaryTable_withglobalInfo)[5] &lt;- &quot;Number of False Discoveries (globally)&quot;
+print(cancerModelSummaryTable_withglobalInfo)
+</code></pre>
+
+<pre><code>##                                        Different eQTLs Cancer Only eQTLs
+## Sensitivty                             0.6363636       0.5656566        
+## Specificty                             1               1                
+## MeasuredFalseDiscoveryRate             0               0                
+## numSigEQtls                            63              56               
+## Number of False Discoveries (globally) 0               0                
+##                                        Normal Only eQTLs No eQTLs
+## Sensitivty                             NaN               NaN     
+## Specificty                             1                 1       
+## MeasuredFalseDiscoveryRate             NaN               NaN     
+## numSigEQtls                            0                 0       
+## Number of False Discoveries (globally) 2                 6       
+##                                        Same eQTL Similar eQTL
+## Sensitivty                             0.6060606 0.6161616   
+## Specificty                             1         1           
+## MeasuredFalseDiscoveryRate             0         0           
+## numSigEQtls                            60        62          
+## Number of False Discoveries (globally) 0         0
+</code></pre>
+
+<pre><code class="r">write.csv(cancerModelSummaryTable_withglobalInfo, file=paste(theRootDir, &quot;paper/SuppTab2.csv&quot;, sep=&quot;&quot;))
+</code></pre>
+
+<p>Add another 500 &ldquo;normal only&rdquo; eQTLs&hellip;. How does this affect the FDR in the &ldquo;bulk&rdquo; and &ldquo;cancer&rdquo; models?</p>
+
+<pre><code class="r">set.seed(12345)
+simulatedEffectSizesCancer[601:1100] &lt;- rep(0, 100) 
+simulatedEffectSizesNormal[601:1100] &lt;- seq(-.5, 0.49, length.out=500)
+for(i in 601:1100)
+{
+  cancerExpressionSimMat &lt;- rbind(cancerExpressionSimMat, c(rep(1, numSamps) + rnorm(numSamps), rep(1 + simulatedEffectSizesCancer[i], (numSamps*2)) + rnorm(numSamps), rep(1 + (simulatedEffectSizesCancer[i]*2), numSamps) + rnorm(numSamps)))
+  normalExpressionSimMat &lt;- rbind(normalExpressionSimMat, c(rep(1, numSamps) + rnorm(numSamps), rep(1 + simulatedEffectSizesNormal[i], (numSamps*2)) + rnorm(numSamps), rep(1 + (simulatedEffectSizesNormal[i]*2), numSamps) + rnorm(numSamps)))
+  bulkExpressionSimMat &lt;- rbind(bulkExpressionSimMat, (cancerExpressionSimMat[i,] * theProp) + (normalExpressionSimMat[i,] * propInv)) # Combine the above to create a bulk expression data, assuming gene expression is additive based on the proportions.
+#   print(i)
+}
+
+# Calculate principal comonents of this expression matrix are included as co-variates.
+bulkPcs &lt;- prcomp(t(bulkExpressionSimMat))$x
+cor.test(propInvNoise, bulkPcs[,1], method=&quot;spearman&quot;)
+</code></pre>
+
+<pre><code>## Warning in cor.test.default(propInvNoise, bulkPcs[, 1], method =
+## &quot;spearman&quot;): Cannot compute exact p-value with ties
+</code></pre>
+
+<pre><code>## 
+##  Spearman&#39;s rank correlation rho
+## 
+## data:  propInvNoise and bulkPcs[, 1]
+## S = 178060000, p-value = 0.03072
+## alternative hypothesis: true rho is not equal to 0
+## sample estimates:
+##         rho 
+## -0.06833408
+</code></pre>
+
+<p>Re-run the eQTL analysis with the new normal specific eQTLs attached and compare the sensitivty, specificity, fdr, for the new dataset</p>
+
+<pre><code class="r">randomProp &lt;- sample(propInvNoise)
+randomPropP &lt;- numeric()
+randomPropEffect &lt;- numeric()
+onlyPropP &lt;- numeric()
+onlyPropEffect &lt;- numeric()
+pcsP &lt;- numeric()
+pcsPEffect &lt;- numeric()
+for(i in 1:nrow(bulkExpressionSimMat))
+{
+  cancerEffectInteractionModel[i] &lt;- coef(summary(lm(bulkExpressionSimMat[i,]~genotype*propInvNoise)))[2, 1]
+  normalEffectInteractionModel[i] &lt;- coef(summary(lm(bulkExpressionSimMat[i,]~genotype*thePropNoise)))[2, 1]
+  bulkEffectConventionalModel[i] &lt;- coef(summary(lm(bulkExpressionSimMat[i,]~genotype)))[2, 1]
+  pValuesBulkTumor[i] &lt;- coef(summary(lm(bulkExpressionSimMat[i,]~genotype)))[2, 4]
+  pValuesCancerInteractionModel[i] &lt;- coef(summary(lm(bulkExpressionSimMat[i,]~genotype*propInvNoise)))[2, 4]
+  interactionTermPvalue[i] &lt;- coef(summary(lm(bulkExpressionSimMat[i,]~genotype*propInvNoise)))[4, 4]
+
+  # How does the model perform when the proportion is simply shuffled randomly?
+  randomPropP[i] &lt;- coef(summary(lm(bulkExpressionSimMat[i,]~genotype*randomProp)))[2, 4]
+  randomPropEffect[i] &lt;- coef(summary(lm(bulkExpressionSimMat[i,]~genotype*randomProp)))[2, 1]
+
+  # How does the model do when only proportion is included, no interaction term?
+  onlyPropP[i] &lt;- coef(summary(lm(bulkExpressionSimMat[i,]~genotype+propInvNoise)))[2, 4]
+  onlyPropEffect[i] &lt;- coef(summary(lm(bulkExpressionSimMat[i,]~genotype+propInvNoise)))[2, 1]
+
+  # How does the model look if we include 5 principal componets (not sure this makes any sense in the context of these simulations)
+  pcsP[i] &lt;- coef(summary(lm(bulkExpressionSimMat[i,]~genotype+bulkPcs[,1:5])))[2, 4]
+  pcsPEffect[i] &lt;- coef(summary(lm(bulkExpressionSimMat[i,]~genotype+bulkPcs[,1:5])))[2, 1]
+
+}
+fdrBulkTumor &lt;- p.adjust(pValuesBulkTumor, method=&quot;BH&quot;)
+fdrSigInBulkTumor &lt;- fdrBulkTumor &lt; 0.05
+
+print(calcSensitivitySpecificityFdr(cancerEffectInteractionModel, pValuesCancerInteractionModel, simulatedEffectSizesCancer))
+</code></pre>
+
+<pre><code>## $Sensitivty
+## [1] 0.5580808
+## 
+## $Specificty
+## [1] 0.9900568
+## 
+## $MeasuredFalseDiscoveryRate
+## [1] 0.03070175
+## 
+## $numSigEQtls
+## [1] 228
+## 
+## $FalseDiscoveriesIndex
+## [1] 264 317 396 673 797 879 968
+</code></pre>
+
+<pre><code class="r">print(calcSensitivitySpecificityFdr(bulkEffectConventionalModel, pValuesBulkTumor, simulatedEffectSizesCancer))
+</code></pre>
+
+<pre><code>## $Sensitivty
+## [1] 0.7929293
+## 
+## $Specificty
+## [1] 0.6164773
+## 
+## $MeasuredFalseDiscoveryRate
+## [1] 0.4599659
+## 
+## $numSigEQtls
+## [1] 587
+## 
+## $FalseDiscoveriesIndex
+##   [1]   51  201  202  204  205  206  207  209  211  212  214  217  220  222
+##  [15]  225  226  240  241  273  278  279  281  282  284  285  286  287  288
+##  [29]  289  290  292  294  296  297  298  299  300  339  400  601  602  603
+##  [43]  604  605  606  607  608  609  610  611  612  613  614  615  616  617
+##  [57]  618  619  620  621  622  623  624  625  626  627  628  629  631  632
+##  [71]  633  634  635  636  637  638  639  640  641  642  643  644  645  646
+##  [85]  647  648  649  650  651  652  653  654  655  656  657  660  661  662
+##  [99]  663  664  665  666  667  668  669  670  671  672  673  676  677  678
+## [113]  681  682  683  684  685  686  688  689  690  691  693  694  695  696
+## [127]  697  702  705  708  711  714  716  718  719  720  723  727  728  732
+## [141]  737  738  740  742  744  751  755  761  762  768  772  773  782  785
+## [155]  787  797  809  823  840  863  891  898  909  935  936  941  944  951
+## [169]  953  954  957  958  959  963  964  967  968  970  971  972  974  975
+## [183]  976  977  978  984  985  991  993  995  996  998 1000 1001 1002 1004
+## [197] 1008 1010 1013 1014 1016 1018 1019 1020 1021 1022 1023 1024 1026 1027
+## [211] 1030 1033 1035 1036 1037 1038 1039 1040 1041 1042 1045 1046 1048 1049
+## [225] 1050 1051 1052 1053 1054 1056 1057 1058 1059 1060 1061 1062 1063 1064
+## [239] 1065 1066 1067 1068 1069 1070 1071 1074 1076 1078 1079 1080 1081 1082
+## [253] 1083 1084 1085 1086 1087 1088 1089 1090 1091 1092 1093 1094 1095 1096
+## [267] 1097 1098 1099 1100
+</code></pre>
+
+<pre><code class="r">print(calcSensitivitySpecificityFdr(randomPropEffect, randomPropP, simulatedEffectSizesCancer)) # FDR reaches about 22% with random &quot;proportions&quot;
+</code></pre>
+
+<pre><code>## $Sensitivty
+## [1] 0.5050505
+## 
+## $Specificty
+## [1] 0.9360795
+## 
+## $MeasuredFalseDiscoveryRate
+## [1] 0.1836735
+## 
+## $numSigEQtls
+## [1] 245
+## 
+## $FalseDiscoveriesIndex
+##  [1]  201  204  205  225  233  234  241  278  292  602  605  606  608  612
+## [15]  643  644  645  653  656  684  702  716  724  742  772  799  964  995
+## [29] 1014 1016 1027 1030 1033 1041 1042 1049 1051 1059 1067 1068 1080 1081
+## [43] 1086 1090 1098
+</code></pre>
+
+<pre><code class="r">print(calcSensitivitySpecificityFdr(onlyPropEffect, onlyPropP, simulatedEffectSizesCancer)) # This is interesting and definitely worth noting
+</code></pre>
+
+<pre><code>## $Sensitivty
+## [1] 0.7929293
+## 
+## $Specificty
+## [1] 0.6193182
+## 
+## $MeasuredFalseDiscoveryRate
+## [1] 0.4589041
+## 
+## $numSigEQtls
+## [1] 584
+## 
+## $FalseDiscoveriesIndex
+##   [1]  201  202  204  205  206  207  209  211  212  214  217  220  222  225
+##  [15]  226  240  241  273  278  279  281  282  284  285  286  287  288  289
+##  [29]  290  292  294  296  297  298  299  300  339  400  601  602  603  604
+##  [43]  605  606  607  608  609  610  611  612  613  614  615  616  617  618
+##  [57]  619  620  621  622  623  624  625  626  627  628  629  631  632  633
+##  [71]  634  635  636  637  638  639  640  641  642  643  644  645  646  647
+##  [85]  648  649  650  651  652  653  654  655  656  657  660  661  662  663
+##  [99]  664  665  666  667  668  669  670  671  672  673  676  677  678  681
+## [113]  682  683  684  685  686  688  689  690  691  693  694  695  696  697
+## [127]  702  705  708  711  714  716  718  719  720  723  727  728  732  737
+## [141]  738  740  742  744  751  755  761  762  768  772  773  782  785  787
+## [155]  797  809  823  840  863  891  898  935  936  941  944  951  953  954
+## [169]  957  958  959  963  964  967  968  970  971  972  974  975  976  977
+## [183]  978  984  985  991  993  995  996  998 1000 1001 1002 1004 1008 1010
+## [197] 1013 1014 1016 1018 1019 1020 1021 1022 1023 1024 1026 1027 1030 1033
+## [211] 1035 1036 1037 1038 1039 1040 1041 1042 1045 1046 1048 1049 1050 1051
+## [225] 1052 1053 1054 1056 1057 1058 1059 1060 1061 1062 1063 1064 1065 1066
+## [239] 1067 1068 1069 1070 1071 1074 1076 1078 1079 1080 1081 1082 1083 1084
+## [253] 1085 1086 1087 1088 1089 1090 1091 1092 1093 1094 1095 1096 1097 1098
+## [267] 1099 1100
+</code></pre>
+
+<pre><code class="r">print(calcSensitivitySpecificityFdr(pcsPEffect, pcsP, simulatedEffectSizesCancer))
+</code></pre>
+
+<pre><code>## $Sensitivty
+## [1] 0
+## 
+## $Specificty
+## [1] 1
+## 
+## $MeasuredFalseDiscoveryRate
+## [1] NaN
+## 
+## $numSigEQtls
+## [1] 0
+## 
+## $FalseDiscoveriesIndex
+## integer(0)
+</code></pre>
+
+<p>What class are the misattributed eQTLs</p>
+
+<pre><code class="r">bigClassesVec_withMore &lt;- c(bigClassesVec, rep(&quot;Normal Only eQTLs&quot;, 500))
+print(table(bigClassesVec_withMore[calcSensitivitySpecificityFdr(cancerEffectInteractionModel, pValuesCancerInteractionModel, simulatedEffectSizesCancer)$FalseDiscoveriesIndex]))
+</code></pre>
+
+<pre><code>## 
+##          No eQTLs Normal Only eQTLs 
+##                 2                 5
+</code></pre>
+
+<pre><code class="r">print(table(bigClassesVec_withMore[calcSensitivitySpecificityFdr(bulkEffectConventionalModel, pValuesBulkTumor, simulatedEffectSizesCancer)$FalseDiscoveriesIndex]))
+</code></pre>
+
+<pre><code>## 
+##   Different eQTLs          No eQTLs Normal Only eQTLs 
+##                 1                 2               267
+</code></pre>
+
+<pre><code class="r">print(table(bigClassesVec_withMore[calcSensitivitySpecificityFdr(onlyPropEffect, onlyPropP, simulatedEffectSizesCancer)$FalseDiscoveriesIndex]))
+</code></pre>
+
+<pre><code>## 
+##          No eQTLs Normal Only eQTLs 
+##                 2               266
+</code></pre>
+
+<p>How does measuring the cell type proportions at varying levels of noise affect the performance of the model? Fig. 1&copy;</p>
+
+<pre><code class="r">theNoiseLevels &lt;- seq(0.01, 1.5, 0.025)
+theNoiseLevels &lt;- seq(0.01, 5, 0.1)
+noiseCors &lt;- numeric()
+sensSpecOut &lt;- list()
+for(j in 1:length(theNoiseLevels))
+{
+  thePropNoiseForSims &lt;- theProp + rnorm(length(theProp), 0, theNoiseLevels[j])
+  thePropNoiseForSims &lt;- thePropSort[rank(thePropNoiseForSims)]
+  propInvNoiseForSims &lt;- (1-thePropNoiseForSims)
+
+  noiseCors[j] &lt;- cor(thePropNoiseForSims, theProp)
+  cancerEffectInteractionModel_simNoise &lt;- numeric()
+  pValuesCancerInteractionModel_simNoise &lt;- numeric()
+  for(i in 1:nrow(bulkExpressionSimMat))
+  {
+    cancerEffectInteractionModel_simNoise[i] &lt;- coef(summary(lm(bulkExpressionSimMat[i,]~genotype*propInvNoiseForSims)))[2, 1]
+    pValuesCancerInteractionModel_simNoise[i] &lt;- coef(summary(lm(bulkExpressionSimMat[i,]~genotype*propInvNoiseForSims)))[2, 4]
+  }
+  sensSpecOut[[j]] &lt;- calcSensitivitySpecificityFdr(cancerEffectInteractionModel_simNoise, pValuesCancerInteractionModel_simNoise, simulatedEffectSizesCancer)
+#   print(j)
+}
+matplot &lt;- do.call(cbind, sensSpecOut)
+</code></pre>
+
+<p>Plot the sensitivty, specificity and FDR as we increase the amount of noise with which the proportion of cancer cells are measured. Fig. 3&copy;.</p>
+
+<pre><code class="r">svg(file=paste(theRootDir, &quot;paper/figures/figure1/Fig1c.svg&quot;, sep=&quot;&quot;), height=3.5, width=7)
+plot(noiseCors[order(noiseCors)], as.numeric(matplot[1,order(noiseCors)]), ylim=c(0,1), type=&quot;l&quot;, pch=1, col=&quot;#386cb0&quot;, ylab=&quot;Proportion&quot;, cex.axis=.8, xlab=&quot;Pearson correlation&quot;, bty=&quot;l&quot;, las=1)
+lines(noiseCors[order(noiseCors)], as.numeric(matplot[2,order(noiseCors)]), type=&quot;l&quot;, pch=1, col=&quot;#4daf4a&quot;)
+lines(noiseCors[order(noiseCors)], as.numeric(matplot[3,order(noiseCors)]), type=&quot;l&quot;, pch=1, col=&quot;#984ea3&quot;)
+abline(h=0.05, col=&quot;red&quot;, lty=2)
+legend(&quot;right&quot;, inset=.05, title=&quot;&quot;, c(&quot;Sensitivity&quot;,&quot;Specificity&quot;, &quot;FDR&quot;), col=c(&quot;#386cb0&quot;, &quot;#4daf4a&quot;, &quot;#984ea3&quot;), fill=c(&quot;#386cb0&quot;, &quot;#4daf4a&quot;, &quot;#984ea3&quot;), cex=.8, bty=&quot;n&quot;)
+dev.off()
+</code></pre>
+
+<pre><code>## pdf 
+##   2
+</code></pre>
+
+<p>Add plots for a specifc example, i.e. a an eQTL is discovered because of infiltrating normal tissue, but is removed when we control for cancer cell proportion.</p>
+
+<pre><code class="r">theEqtl &lt;- 298
+svg(file=paste(theRootDir, &quot;paper/figures/figure1/Fig1d.svg&quot;, sep=&quot;&quot;), width=3, height=4)
+plot((genotype+rnorm(length(genotype), 0, .1)), bulkExpressionSimMat[theEqtl,], col=&quot;#00000044&quot;, pch=20, las=1, ylab=&quot;Gene expression&quot;, xlab=&quot;Genotype&quot;, bty=&quot;l&quot;, xaxt = &quot;n&quot;, cex.axis=.8) 
+axis(1, at=0:2, labels=c(&quot;AA&quot;,&quot;AB&quot;,&quot;BB&quot;), cex.axis=.8)
+abline(coef=coef(summary(lm(bulkExpressionSimMat[theEqtl,]~genotype)))[,1], col=&quot;#e31a1c&quot;)
+dev.off()
+</code></pre>
+
+<pre><code>## pdf 
+##   2
+</code></pre>
+
+<p>The P-value for this eQTL</p>
+
+<pre><code class="r">print(coef(summary(lm(bulkExpressionSimMat[theEqtl,]~genotype))))
+</code></pre>
+
+<pre><code>##              Estimate Std. Error   t value     Pr(&gt;|t|)
+## (Intercept) 0.9831326 0.04617563 21.291155 3.171838e-83
+## genotype    0.1517212 0.03770225  4.024195 6.149228e-05
+</code></pre>
+
+<p>Plot this eQTL when it is split into bins of the various cancer proportions (Fig. 1(e))</p>
+
+<pre><code class="r">names(propInvNoise) &lt;- as.character(1:length(propInvNoise))
+thisEqtl &lt;- bulkExpressionSimMat[theEqtl,]
+names(thisEqtl) &lt;- as.character(1:length(propInvNoise))
+names(genotype) &lt;- as.character(1:length(propInvNoise))
+d &lt;- sort(propInvNoise)
+a &lt;- split(d, ceiling(seq_along(d)/200))
+theBetas &lt;- numeric()
+theSes &lt;- numeric()
+for(i in 1:length(a))
+{
+  theCoefHere &lt;- coef(summary(lm(thisEqtl[names(a[[i]])]~genotype[names(a[[i]])])))
+  theSes[i] &lt;- theCoefHere[2, 2]*1.96
+  theBetas[i] &lt;- theCoefHere[2, 1]
+#   print(i)
+}
+seCancer &lt;- coef(summary(lm(bulkExpressionSimMat[theEqtl,]~genotype*propInvNoise)))[2,2]*1.96
+betaCancer &lt;- coef(summary(lm(bulkExpressionSimMat[theEqtl,]~genotype*propInvNoise)))[2,1]
+betaMaxCancer &lt;- betaCancer + seCancer
+betaMinCancer &lt;- betaCancer - seCancer
+maxY &lt;- max(c(betaMaxCancer, theBetas+theSes)) + .1
+minY &lt;- min(c(betaMinCancer,theBetas-theSes)) - .1
+x &lt;- sapply(a, mean)
+</code></pre>
+
+<p>The P-value for the eQTL in cancer using the interaction model</p>
+
+<pre><code class="r">print(coef(summary(lm(bulkExpressionSimMat[theEqtl,]~genotype*propInvNoise))))
+</code></pre>
+
+<pre><code>##                         Estimate Std. Error   t value     Pr(&gt;|t|)
+## (Intercept)           0.95068280 0.10427574 9.1170088 4.156870e-19
+## genotype              0.01811759 0.08513356 0.2128137 8.315158e-01
+## propInvNoise          0.13407630 0.34846856 0.3847587 7.004984e-01
+## genotype:propInvNoise 0.47377057 0.27925637 1.6965435 9.009547e-02
+</code></pre>
+
+<p>Make the figure</p>
+
+<pre><code class="r">svg(file=paste(theRootDir, &quot;paper/figures/figure1/Fig1e.svg&quot;, sep=&quot;&quot;), width=5, height=4)
+plot(x, theBetas, ylim=c(minY, maxY), xlim=c(-.28, 1.1), pch=20, xlab=&quot;Proportion of normal tissue&quot;, ylab=&quot;eQTL effect size&quot;, main=&quot;&quot;, las=1, cex.axis=.8, xaxt = &quot;n&quot;, bty=&quot;l&quot;,panel.first=abline(h=0, col=&quot;darkgrey&quot;, lty=2))
+axis(1, at=c(-.2, 0, .2, .4, .6, .8, 1), labels=c(&quot;Bulk\nTumor&quot;, &quot;0%&quot;, &quot;20%&quot;, &quot;40%&quot;, &quot;60%&quot;, &quot;80%&quot;, &quot;100%&quot;), cex.axis=.8)
+abline(v=-.1, col=&quot;black&quot;, lty=1, lwd=2)
+arrows(x, theBetas-theSes, x, theBetas+theSes, length=0.05, angle=90, code=3)
+
+# Plot the effect size and standard error for the bulk tumor
+betaBulk &lt;- coef(summary(lm(bulkExpressionSimMat[theEqtl,]~genotype)))[2,1]
+seBulk &lt;- coef(summary(lm(bulkExpressionSimMat[theEqtl,]~genotype)))[2,2]*1.96
+points(-.2, coef(summary(lm(bulkExpressionSimMat[theEqtl,]~genotype)))[2,1], col=&quot;#1a9641&quot;, pch=20)
+arrows(-.2, betaBulk-seBulk, -.2, betaBulk+seBulk, length=0.05, angle=90, code=3, col=&quot;#1a9641&quot;)
+
+# add the points for &quot;cancer&quot; and &quot;normal&quot;
+points(0, betaCancer, pch=20, col=&quot;#ca0020&quot;)
+
+# add the standard errors for &quot;cancer&quot; and &quot;normal&quot;
+arrows(0, betaMinCancer, 0, betaMaxCancer, length=0.05, angle=90, code=3, col=&quot;#ca0020&quot;) # cancer
+dev.off()
+</code></pre>
+
+<pre><code>## pdf 
+##   2
+</code></pre>
+
+<pre><code class="r">print(sessionInfo())
+</code></pre>
+
+<pre><code>## R version 3.2.2 (2015-08-14)
+## Platform: x86_64-pc-linux-gnu (64-bit)
+## Running under: Ubuntu 14.04.3 LTS
+## 
+## locale:
+##  [1] LC_CTYPE=en_US.UTF-8       LC_NUMERIC=C              
+##  [3] LC_TIME=en_US.UTF-8        LC_COLLATE=en_US.UTF-8    
+##  [5] LC_MONETARY=en_US.UTF-8    LC_MESSAGES=en_US.UTF-8   
+##  [7] LC_PAPER=en_US.UTF-8       LC_NAME=C                 
+##  [9] LC_ADDRESS=C               LC_TELEPHONE=C            
+## [11] LC_MEASUREMENT=en_US.UTF-8 LC_IDENTIFICATION=C       
+## 
+## attached base packages:
+## [1] stats     graphics  grDevices utils     datasets  methods   base     
+## 
+## other attached packages:
+## [1] knitr_1.12.3
+## 
+## loaded via a namespace (and not attached):
+## [1] magrittr_1.5   markdown_0.7.7 tools_3.2.2    stringi_1.0-1 
+## [5] stringr_1.0.0  mime_0.4       evaluate_0.8.3
+</code></pre>
+
+</body>
+
+</html>
